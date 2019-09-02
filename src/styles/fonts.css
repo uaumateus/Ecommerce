@@ -1,0 +1,15 @@
+@font-face {
+    font-family: FontRegular;
+    src: url('../assets/fonts/Nunito-Regular.ttf');
+}
+
+@font-face {
+    font-family: FontBold;
+    src: url('../assets/fonts/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: FontLight;
+    src: url('../assets/fonts/Oswald-Light.ttf');
+}
+
