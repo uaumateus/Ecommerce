@@ -1,0 +1,20 @@
+:root {
+    --primary: #FF4B2B;
+    --secundary: #FF416C;
+    --textDark: #000000;
+    --textLight: #FFFFFF;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  html {
+    background: var(--textLight);
+    background-size: cover;
+  }
