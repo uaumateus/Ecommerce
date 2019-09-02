@@ -3,18 +3,32 @@
     --secundary: #FF416C;
     --textDark: #000000;
     --textLight: #FFFFFF;
-  }
-  
-  body {
+}
+
+body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-    overflow-x: hidden;
-  }
-  
-  html {
+}
+
+html {
     background: var(--textLight);
     background-size: cover;
-  }
+}
+
+.buttonPrimary{
+    background: transparent linear-gradient(90deg, #FF416C 0%, #FF4B2B 100%) 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 0 15px 0 15px;
+    align-items: center;
+    height: 40px;
+    color: var(--textLight);
+    font-family: FontRegular;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+}

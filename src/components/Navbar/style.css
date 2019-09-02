@@ -1,0 +1,17 @@
+.navbar{
+    background-color: var(--textLight);
+    height: 70px;
+    width: 100vw;
+    box-shadow: 0px 3px 6px #00000029;
+    display: grid;
+    grid-template-columns: 300px auto;
+    align-items: center;
+}
+
+.navbar .optionsNavbar{
+    display: flex;
+    flex-direction: row;
+    justify-self: right;
+    align-items: center;
+    padding-right: 50px;
+}
