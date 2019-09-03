@@ -13,3 +13,30 @@
     src: url('../assets/fonts/Oswald-Light.ttf');
 }
 
+@font-face {
+    font-family: FontBanner;
+    src: url('../assets/fonts/AbrilFatface-Regular.ttf');
+}
+
+.Large-Text-Banner{
+    font-family: FontBanner;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+    color: var(--textLight);
+}
+
+.Large-Text-Regular{
+    font-family: FontRegular;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}

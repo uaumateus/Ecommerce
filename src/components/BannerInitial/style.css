@@ -1,0 +1,22 @@
+.containerBanner{
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 70px auto;
+}
+
+.slider{
+  width: 100%;
+  height: 100%;
+}
+
+.containerBanner .center{
+  position: absolute;
+  bottom: 0;
+  margin: 25vh 20%;
+}
+
+.containerBanner .Large-Text-Regular{
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 500px;
+}
