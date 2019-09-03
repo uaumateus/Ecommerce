@@ -15,7 +15,7 @@ const BannerInitial = () => {
     return(
         <div className="containerBanner">
             <div></div>
-            <Slider>
+            <Slider autoplay={3000}>
                 {content.map((item, index) => (
                     <div
                         key={index}
