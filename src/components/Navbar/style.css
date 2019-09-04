@@ -7,7 +7,7 @@
     grid-template-columns: 300px auto;
     align-items: center;
     position: fixed;
-    z-index: 999;
+    z-index: 100;
 }
 
 .navbar .optionsNavbar{

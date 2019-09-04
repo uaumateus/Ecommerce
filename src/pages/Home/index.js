@@ -13,6 +13,10 @@ const products = [
     {title: "Camisa Mockup", price: "120", image: imageMockup},
     {title: "Camisa Mockup", price: "120", image: imageMockup},
     {title: "Camisa Mockup", price: "120", image: imageMockup},
+    {title: "Camisa Mockup", price: "120", image: imageMockup},
+    {title: "Camisa Mockup", price: "120", image: imageMockup},
+    {title: "Camisa Mockup", price: "120", image: imageMockup},
+    {title: "Camisa Mockup", price: "120", image: imageMockup},
 ]
 
 export default class Home extends Component{

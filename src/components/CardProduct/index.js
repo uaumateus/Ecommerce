@@ -9,7 +9,7 @@ export default class CardProduct extends Component{
             backgroundSize: 'cover',
             width: '170px',
             height: '250px',
-            borderRadius: '5px'
+            borderRadius: '8px'
         }
         return(
             <div className="cardProduct">
