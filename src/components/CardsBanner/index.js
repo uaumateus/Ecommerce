@@ -7,19 +7,19 @@ const CardsBanner = () => {
             <div className="cardItem">
                 <article>
                 </article>
-                <p className="Large-Text-Regular">Produtos à pronta entrega com rastreamento</p>
+                <p className="Medium-Text-Regular">Produtos à pronta entrega com rastreamento</p>
             </div>
 
             <div className="cardItem">
                 <article>
                 </article>
-                <p className="Large-Text-Regular">Parcelas facilitadas em até 5 vezes sem juros</p>
+                <p className="Medium-Text-Regular">Parcelas facilitadas em até 5 vezes sem juros</p>
             </div>
 
             <div className="cardItem">
                 <article>
                 </article>
-                <p className="Large-Text-Regular">Toda semana promoção garantida em todo o site</p>
+                <p className="Medium-Text-Regular">Toda semana promoção garantida em todo o site</p>
             </div>
         </div>
     )

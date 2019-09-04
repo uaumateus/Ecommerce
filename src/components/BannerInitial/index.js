@@ -23,7 +23,7 @@ const BannerInitial = () => {
                     >
                         <div className="center">
                             <h1 className="Large-Text-Banner">{item.title}</h1>
-                            <p className="Large-Text-Regular">{item.description}</p>
+                            <p className="Medium-Text-Regular">{item.description}</p>
                             <button className="button buttonSecundary">Ver Mais</button>
                         </div>
                     </div>

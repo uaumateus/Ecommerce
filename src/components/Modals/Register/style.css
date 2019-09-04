@@ -13,22 +13,42 @@
     background-color: #FFFFFF;
     position: absolute;
     margin-left: 35vw;
-    margin-top: 90px;
+    margin-top: 10vh;
     width: 30vw;
     border-radius: 10px;
     z-index: 300;
     display: grid;
-    grid-template-rows: 50px auto 50px;
+    grid-template-rows: 60px auto 60px;
 }
 
 .headerModal{
     border-bottom: 1px solid #000000;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 .footerModal{
     border-top: 1px solid #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerModal .link{
+    color: #1D62B1;
+    margin-left: 5px;
 }
 
 .contentModal{
     padding: 24px;
+    text-align: center;
+}
+
+.iconClose{
+    width: 16px;
+    cursor: pointer;
 }

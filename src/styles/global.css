@@ -3,6 +3,7 @@
     --secundary: #FF416C;
     --textDark: #000000;
     --textLight: #FFFFFF;
+    --disable :#9B9B9B;
 }
 
 body {
@@ -18,6 +19,11 @@ html {
     background-size: cover;
 }
 
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .button{
     border-radius: 50px;
     box-shadow: 0px 3px 6px #00000029;
@@ -28,6 +34,7 @@ html {
     font-size: 18px;
     outline: none;
     cursor: pointer;
+    min-width: 100px;
 }
 
 .buttonPrimary{

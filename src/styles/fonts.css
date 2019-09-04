@@ -30,9 +30,20 @@
     color: var(--textLight);
 }
 
-.Large-Text-Regular{
+.Medium-Text-Regular{
     font-family: FontRegular;
     font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Large-Text-Regular{
+    font-family: FontRegular;
+    font-size: 18px;
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -54,6 +65,16 @@
 .Large-Text-Bold{
     font-family: FontBold;
     font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Medium-Text-Bold{
+    font-family: FontBold;
+    font-size: 16px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.38;
