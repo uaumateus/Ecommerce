@@ -1,0 +1,14 @@
+.inputText{
+    outline: none;
+    border: none;
+    background: none;
+    width: 100%;
+    color: var(--textDark);
+}
+
+.contentInputText{
+    border: 1px solid var(--disable);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}

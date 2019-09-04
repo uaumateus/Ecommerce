@@ -13,3 +13,71 @@
     src: url('../assets/fonts/Oswald-Light.ttf');
 }
 
+@font-face {
+    font-family: FontBanner;
+    src: url('../assets/fonts/AbrilFatface-Regular.ttf');
+}
+
+.Large-Text-Banner{
+    font-family: FontBanner;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+    color: var(--textLight);
+}
+
+.Medium-Text-Regular{
+    font-family: FontRegular;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Large-Text-Regular{
+    font-family: FontRegular;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Small-Text-Light{
+    font-family: FontLight;
+    font-size: 12px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Large-Text-Bold{
+    font-family: FontBold;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Medium-Text-Bold{
+    font-family: FontBold;
+    font-size: 16px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}

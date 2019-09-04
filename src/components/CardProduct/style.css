@@ -1,0 +1,10 @@
+.cardProduct{
+    margin-top: 20px;
+    text-align: center;
+    justify-self: center;
+}
+
+.cardProduct .Large-Text-Bold{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
