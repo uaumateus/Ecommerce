@@ -27,3 +27,24 @@
 .navbar .buttonSecundary{
     margin-right: 10px;
 }
+
+.navbar .containerLogo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.navbar .containerLogo article{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+    cursor: pointer;
+    color: var(--disable);
+}
+
+.navbar .containerLogo article img{
+    width: 20px;
+    margin-right: 8px;
+}

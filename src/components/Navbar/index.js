@@ -4,6 +4,7 @@ import './style.css';
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
 
+import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
 import iconFavorite from './assets/favorite_icon.svg';
 import iconBag from './assets/bag_icon.svg';
@@ -42,7 +43,14 @@ export default class Navbar extends Component{
                     onChangeState={this.handleModalRegister}
                     handlerLogin={this.handleModalLogin}
                 />
-                <h4>LOGOAQUI</h4>
+                <div className="containerLogo">
+                    <p className="Large-Text-Bold">LOGOAQUI</p>
+                    <article>
+                        <img src={iconCategories} />
+                        <p className="Medium-Text-Regular">Categorias</p>
+                    </article>
+                </div>
+                
                 <div className="optionsNavbar">
                     <img src={iconSearch} className="iconNavbar" />
                     <img src={iconFavorite} className="iconNavbar"/>
