@@ -6,5 +6,17 @@
 
 .cardProduct .Large-Text-Bold{
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.cardProduct .imgProduct{
+    width: 170px;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px #00000029;
+    overflow: hidden;
+}
+
+.cardProduct .imgProduct img{
+    width: 100%;
 }

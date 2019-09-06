@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="119.5" viewBox="0 0 83 119.5">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-5 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #191919;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #191919;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="package_icon" transform="translate(-135 -1407.5)">
+    <g id="Grupo_24" data-name="Grupo 24" transform="translate(16 -64)">
+      <path id="Caminho_10" data-name="Caminho 10" class="cls-1" d="M162,1532s-57.492-64,0-64S162,1532,162,1532Z" transform="translate(-1.948 4)"/>
+      <g id="Elipse_8" data-name="Elipse 8" class="cls-1" transform="translate(147 1482)">
+        <circle class="cls-4" cx="13.5" cy="13.5" r="13.5"/>
+        <circle class="cls-5" cx="13.5" cy="13.5" r="13"/>
+      </g>
+    </g>
+    <g id="Retângulo_10" data-name="Retângulo 10" class="cls-1" transform="translate(135 1481)">
+      <rect class="cls-4" width="83" height="46" rx="2"/>
+      <rect class="cls-5" x="0.5" y="0.5" width="82" height="45" rx="1.5"/>
+    </g>
+    <path id="favorite_icon" class="cls-2" d="M1.664,10.951H1.71A6.712,6.712,0,0,1,0,6.424,6.171,6.171,0,0,1,5.883,0,5.728,5.728,0,0,1,10.6,2.582,5.729,5.729,0,0,1,15.314,0,6.171,6.171,0,0,1,21.2,6.423a6.7,6.7,0,0,1-1.815,4.641h.035L10.54,19.382Z" transform="translate(165.5 1494.5)"/>
+    <path id="Caminho_14" data-name="Caminho 14" class="cls-3" d="M0,0H82" transform="translate(135.5 1519.5)"/>
+    <path id="Caminho_15" data-name="Caminho 15" class="cls-3" d="M0,0H82" transform="translate(135.5 1488.5)"/>
+    <path id="Caminho_17" data-name="Caminho 17" class="cls-3" d="M0,0V45" transform="translate(211.5 1481.5)"/>
+    <path id="Caminho_16" data-name="Caminho 16" class="cls-3" d="M0,0V45" transform="translate(142.5 1481.5)"/>
+  </g>
+</svg>

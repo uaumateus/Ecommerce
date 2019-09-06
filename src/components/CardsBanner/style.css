@@ -15,6 +15,10 @@
 .cardsBanner article{
     width: 140px;
     height: 120px;
-    border: 1px solid var(--textDark);
+    box-shadow: 0px 3px 6px #00000029;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--textLight);
 }

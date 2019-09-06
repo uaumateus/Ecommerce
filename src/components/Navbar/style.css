@@ -17,3 +17,13 @@
     align-items: center;
     padding-right: 50px;
 }
+
+.navbar .iconNavbar{
+    width: 20px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.navbar .buttonSecundary{
+    margin-right: 10px;
+}

@@ -4,6 +4,10 @@ import './style.css';
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
 
+import iconSearch from './assets/search_icon.svg';
+import iconFavorite from './assets/favorite_icon.svg';
+import iconBag from './assets/bag_icon.svg';
+
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
@@ -40,11 +44,11 @@ export default class Navbar extends Component{
                 />
                 <h4>LOGOAQUI</h4>
                 <div className="optionsNavbar">
-                    <h4>icon1</h4>
-                    <h4>icon2</h4>
-                    <h4>icon3</h4>
+                    <img src={iconSearch} className="iconNavbar" />
+                    <img src={iconFavorite} className="iconNavbar"/>
+                    <img src={iconBag} className="iconNavbar"/>
+                    <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
                     <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
-                    <button className="button buttonSecundary" onClick={this.handleModalLogin}>Login</button>
                 </div>
             </header>
         )

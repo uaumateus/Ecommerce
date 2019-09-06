@@ -52,9 +52,9 @@
     margin: 0;
 }
 
-.Small-Text-Light{
+.Medium-Text-Light{
     font-family: FontLight;
-    font-size: 12px;
+    font-size: 16px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.38;

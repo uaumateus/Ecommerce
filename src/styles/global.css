@@ -3,7 +3,8 @@
     --secundary: #FF416C;
     --textDark: #000000;
     --textLight: #FFFFFF;
-    --disable :#9B9B9B;
+    --disable:#9B9B9B;
+    --background: #FBFBFB;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
 }
 
 html {
-    background: var(--textLight);
+    background: var(--background);
     background-size: cover;
 }
 
@@ -29,7 +30,7 @@ a{
     box-shadow: 0px 3px 6px #00000029;
     padding: 0 15px 0 15px;
     align-items: center;
-    height: 40px;
+    height: 35px;
     font-family: FontRegular;
     font-size: 18px;
     outline: none;
