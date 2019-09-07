@@ -1,0 +1,17 @@
+.bag .iconHome{
+    width: 20px;
+}
+
+.bag .breadcrumb{
+    display: grid;
+    grid-template-columns: 20px auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bag .container{
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-gap: 24px;
+}

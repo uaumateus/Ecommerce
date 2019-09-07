@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
+import Bag from './pages/Bag';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home}/>
+        <Route path="/sacola" exact component={Bag}/>
       </Switch>
       <Footer />
     </div>

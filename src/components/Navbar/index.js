@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 import Login from '../Modals/Login';
@@ -53,8 +54,8 @@ export default class Navbar extends Component{
                 
                 <div className="optionsNavbar">
                     <img src={iconSearch} className="iconNavbar" />
-                    <img src={iconFavorite} className="iconNavbar"/>
-                    <img src={iconBag} className="iconNavbar"/>
+                    <img src={iconFavorite} className="iconNavbar" />
+                    <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
                     <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
                     <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
                 </div>

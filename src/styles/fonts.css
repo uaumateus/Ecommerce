@@ -30,6 +30,16 @@
     color: var(--textLight);
 }
 
+.Small-Text-Regular{
+    font-family: FontRegular;
+    font-size: 14px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
 .Medium-Text-Regular{
     font-family: FontRegular;
     font-size: 16px;
@@ -44,6 +54,16 @@
 .Large-Text-Regular{
     font-family: FontRegular;
     font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Title-Text-Regular{
+    font-family: FontRegular;
+    font-size: 22px;
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -75,6 +95,16 @@
 .Medium-Text-Bold{
     font-family: FontBold;
     font-size: 16px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.Small-Text-Bold{
+    font-family: FontBold;
+    font-size: 14px;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.38;

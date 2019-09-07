@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.837" height="32.199" viewBox="0 0 23.837 32.199">
+  <defs>
+    <style>
+      .cls-1, .cls-4, .cls-6 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-4 {
+        stroke: #191919;
+        stroke-linecap: round;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-4 {
+        stroke-width: 2px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #191919;
+      }
+
+      .cls-5 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="trash_icon" transform="translate(-0.602 -1)">
+    <g id="Grupo_40" data-name="Grupo 40" transform="translate(0.602 1)">
+      <path id="Retângulo_16" data-name="Retângulo 16" class="cls-1" d="M0,0H21.59a0,0,0,0,1,0,0V20.226a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V0A0,0,0,0,1,0,0Z" transform="translate(1.022 6.973)"/>
+      <g id="Retângulo_17" data-name="Retângulo 17" class="cls-2" transform="translate(0 1.624)">
+        <rect class="cls-5" width="23.837" height="2.247"/>
+        <rect class="cls-6" x="0.5" y="0.5" width="22.837" height="1.247"/>
+      </g>
+      <path id="Caminho_29" data-name="Caminho 29" class="cls-3" d="M4.871,0c2.69,0,4.871,1.449,4.871,3.237H0C0,1.449,2.181,0,4.871,0Z" transform="translate(6.688)"/>
+      <g id="Componente_24_1" data-name="Componente 24 – 1" transform="translate(6.48 12.371)">
+        <line id="Linha_15" data-name="Linha 15" class="cls-4" y2="12.827" transform="translate(0 0)"/>
+        <line id="Linha_16" data-name="Linha 16" class="cls-4" y2="12.827" transform="translate(5.593 0)"/>
+        <line id="Linha_17" data-name="Linha 17" class="cls-4" y2="12.827" transform="translate(11.185 0)"/>
+      </g>
+    </g>
+  </g>
+</svg>
