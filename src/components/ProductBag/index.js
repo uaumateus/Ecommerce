@@ -5,7 +5,7 @@ import iconTrash from './assets/trash_icon.svg';
 export default class ProductBag extends Component{
 
     state = {
-        valueProduct : 0
+        valueProduct : 1
     }
 
     addValueProduct = () => {
@@ -13,7 +13,7 @@ export default class ProductBag extends Component{
     }
 
     removeValueProduct = () => {
-        if(this.state.valueProduct > 0)
+        if(this.state.valueProduct > 1)
             this.setState({valueProduct: this.state.valueProduct-1});
     }
 

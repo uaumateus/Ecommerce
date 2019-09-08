@@ -6,6 +6,7 @@ import iconHome from './assets/home_icon.svg';
 import imageMockup from '../../assets/mockup.png';
 
 import ProductBag from '../../components/ProductBag';
+import CardBag from '../../components/CardBag';
 
 export default class Bag extends Component{
     render(){
@@ -21,6 +22,7 @@ export default class Bag extends Component{
                         <ProductBag product={{title: "Camisa Mockup", price: "120", image: imageMockup}} />
                         <ProductBag product={{title: "Camisa Mockup", price: "150", image: imageMockup}} />
                     </div>
+                    <CardBag />
                 </div>
             </div>
         )
