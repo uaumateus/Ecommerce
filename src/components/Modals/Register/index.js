@@ -38,7 +38,7 @@ export default class Register extends Component {
                     </div>
                     <div className="footerModal">
                         <p className="Medium-Text-Regular">Já tem uma conta?</p>
-                        <a onClick={this.openModalLogin}><p className="Medium-Text-Regular link">Fazer Login</p></a>
+                        <a onClick={this.openModalLogin}><p className="Small-Text-Bold link">Fazer Login</p></a>
                     </div>
                 </div>
             </>

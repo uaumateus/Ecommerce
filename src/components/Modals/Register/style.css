@@ -22,7 +22,7 @@
 }
 
 .headerModal{
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid var(--disable);
     display: grid;
     grid-template-columns: 1fr 24px;
     align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .footerModal{
-    border-top: 1px solid #000000;
+    border-top: 1px solid var(--disable);
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -6,4 +6,10 @@
     padding: 10px;
     border-top: 1px solid #B4B4B4;
     background-color: #FFFFFF;
+    height: 50px;
+}
+
+.footer .Small-Text-Regular{
+    color: var(--textDark);
+    margin: 0 10px;
 }
