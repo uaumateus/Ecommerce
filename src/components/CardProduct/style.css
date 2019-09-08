@@ -12,9 +12,41 @@
 .cardProduct .imgProduct{
     width: 170px;
     height: 250px;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0px 3px 6px #00000029;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.cardProduct .imgProduct .backgroundHover{
+    width: 170px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: absolute;
+    background-image: linear-gradient(180deg, rgba(255, 65, 108, 0.85) 0%, rgba(255, 75, 43, 0.85) 100%);
+    opacity: 0;
+    transition: opacity .8s;
+}
+
+.cardProduct .imgProduct:hover .backgroundHover{
+    opacity: 1;
+}
+
+.cardProduct .backgroundHover .icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    position: absolute;
+    margin-top: 80px;
+    align-items: center;
+}
+
+.cardProduct .backgroundHover img{
+    width: 20px !important;
 }
 
 .cardProduct .imgProduct img{
