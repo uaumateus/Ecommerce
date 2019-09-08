@@ -1,0 +1,11 @@
+.breadcrumb{
+    display: grid;
+    grid-template-columns: 20px auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.breadcrumb .iconHome{
+    width: 20px;
+}
