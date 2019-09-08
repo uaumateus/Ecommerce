@@ -20,7 +20,8 @@
 
 .navbar .iconNavbar{
     width: 20px;
-    margin-right: 30px;
+    margin-right: 25px;
+    padding: 10px 5px;
     cursor: pointer;
 }
 
@@ -47,4 +48,34 @@
 .navbar .containerLogo article img{
     width: 20px;
     margin-right: 8px;
+}
+
+.navbar .dropdownUser{
+    position: absolute;
+    list-style: none;
+    margin-left: -160px;
+    margin-top: -5px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px;
+    padding: 0;
+    display: none;
+}
+
+.navbar .profileOptions:hover .dropdownUser{
+    display: block;
+}
+
+.navbar .dropdownUser li{
+    padding: 10px 24px;
+    color: var(--textDark);
+    cursor: pointer;
+}
+
+.navbar .dropdownUser li:hover{
+    color: var(--primary);
+}
+
+.navbar .dropdownUser .liLine{
+    border-bottom: 1px solid #B4B4B4;
 }

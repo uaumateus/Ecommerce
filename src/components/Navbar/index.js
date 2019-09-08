@@ -9,13 +9,15 @@ import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
 import iconFavorite from './assets/favorite_icon.svg';
 import iconBag from './assets/bag_icon.svg';
+import iconPerson from './assets/person_icon.svg';
 
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
         this.state = {
             showRegister: false,
-            showLogin: false
+            showLogin: false,
+            logged: true
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -56,8 +58,25 @@ export default class Navbar extends Component{
                     <img src={iconSearch} className="iconNavbar" />
                     <img src={iconFavorite} className="iconNavbar" />
                     <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
-                    <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
-                    <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
+
+                    {this.state.logged ?
+                        <div className="profileOptions">
+                            <img src={iconPerson} className="iconNavbar" />
+                            <ul className="dropdownUser">
+                                <li className="Medium-Text-Regular liLine">Histórico de compra</li>
+                                <li className="Medium-Text-Regular liLine">Conta</li>
+                                <li className="Medium-Text-Regular">Sair</li>
+                            </ul>
+                        </div>
+                    :
+                        <>
+                            <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
+                            <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
+                        </>
+                    }
+
+                    
+
                 </div>
             </header>
         )
