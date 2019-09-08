@@ -63,7 +63,7 @@ export default class Navbar extends Component{
                         <div className="profileOptions">
                             <img src={iconPerson} className="iconNavbar" />
                             <ul className="dropdownUser">
-                                <li className="Medium-Text-Regular liLine">Histórico de compra</li>
+                                <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                 <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
                                 <li className="Medium-Text-Regular">Sair</li>
                             </ul>

@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Bag from './pages/Bag';
 import Account from './pages/Account';
+import HistoricBuys from './pages/HistoricBuys';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" exact component={Home}/>
         <Route path="/sacola" exact component={Bag}/>
         <Route path="/conta" exact component={Account}/>
+        <Route path="/historico" exact component={HistoricBuys}/>
       </Switch>
       <Footer />
     </div>
