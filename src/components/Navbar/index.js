@@ -78,7 +78,7 @@ export default class Navbar extends Component{
                                     <ul className="dropdownUser">
                                         <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                         <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
-                                        <li className="Medium-Text-Regular liLine ">Clientes</li>
+                                        <Link to="/clientes"><li className="Medium-Text-Regular liLine ">Clientes</li></Link>
                                         <li className="Medium-Text-Regular liLine">Estoque</li>
                                         <li className="Medium-Text-Regular liLine reports">Relatórios
                                             <ul className="subDropdown">

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './style.css';
+import '../style.css';
 
-import imgMockup from '../../assets/mockup.png';
+import imgMockup from '../../../assets/mockup.png';
+import iconClose from '../assets/close_icon.svg';
 
-export default class Accordion extends Component{
+export default class Historic extends Component{
 
     state = {
         accordion: false
@@ -15,7 +16,7 @@ export default class Accordion extends Component{
 
     render(){
         return(
-            <div className="accordion">
+            <div className="accordion accordionHistoric">
                 <div className="header" onClick={this.handleAccordion}>
                     <p className="Medium-Text-Bold">1 produto</p>
                     <article>
@@ -27,9 +28,9 @@ export default class Accordion extends Component{
                         <p className="Medium-Text-Bold">R$ 150,00</p>
                     </article>
                     {this.state.accordion ?
-                        <p className="Large-Text-Bold">-</p>
+                        <img src={iconClose} className="iconClose"/>
                         :
-                        <p className="Large-Text-Bold">+</p>
+                        <img src={iconClose} className="iconOpen"/>
                     }
                 </div>
                 {this.state.accordion &&

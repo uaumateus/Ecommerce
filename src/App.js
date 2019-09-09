@@ -11,6 +11,7 @@ import HistoricBuys from './pages/HistoricBuys';
 import ReportPurchasesPerCustomer from './pages/Admin/Reports/PurchasesPerCustomer';
 import ReportMissingProducts from './pages/Admin/Reports/MissingProducts';
 import ReportDailyValue from './pages/Admin/Reports/DailyValue';
+import Customers from './pages/Admin/Customers';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/relatorio-compras-por-cliente" exact component={ReportPurchasesPerCustomer} />
         <Route path="/relatorio-produtos-em-falta" exact component={ReportMissingProducts} />
         <Route path="/relatorio-valor-diario" exact component={ReportDailyValue} />
+        <Route path="/clientes" exact component={Customers} />
       </Switch>
       <Footer />
     </div>

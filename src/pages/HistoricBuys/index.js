@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import './style.css';
 
-import imageMockup from '../../assets/mockup.png';
-
 import BreadCrumb from '../../components/BreadCrumb';
-import Accordion from '../../components/Accordion';
+import Accordion from '../../components/Accordions/Historic';
 
 export default class HistoricBuys extends Component{
     render(){
