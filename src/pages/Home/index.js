@@ -22,7 +22,7 @@ const products = [
 export default class Home extends Component{
     render(){
         return(
-            <div>
+            <div className="home">
                 <BannerInitial />
                 <div className="content">
                     <CardsBanner />

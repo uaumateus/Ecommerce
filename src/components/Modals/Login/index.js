@@ -35,7 +35,7 @@ export default class Login extends Component {
                     </div>
                     <div className="footerModal">
                         <p className="Medium-Text-Regular">Não tem uma conta?</p>
-                        <a onClick={this.openModalRegister}><p className="Medium-Text-Regular link">Cadastre-se</p></a>
+                        <a onClick={this.openModalRegister}><p className="Small-Text-Bold link">Cadastre-se</p></a>
                     </div>
                 </div>
             </>

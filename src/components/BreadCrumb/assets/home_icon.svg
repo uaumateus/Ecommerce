@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="32.501" viewBox="0 0 34 32.501">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #191919;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="home_icon" class="cls-1" d="M-7294.5,34.5h-9V18.16h-3.5L-7291,4l16,14.161h-3.5V34.5h-9v-12h-7v12Z" transform="translate(7308 -3)"/>
+</svg>

@@ -1,0 +1,18 @@
+.cardBag{
+    background-color: var(--textLight);
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 24px;
+    height: min-content;
+    text-align: center;
+}
+
+.cardBag .containerInfos{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.cardBag .containerInfos .Large-Text-Regular{
+    margin-right: 10px;
+}

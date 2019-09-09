@@ -1,0 +1,32 @@
+.inputTextAlter .inputContent{
+    height: 30px;
+    border: 1px solid var(--disable);
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 5px 0;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.inputTextAlter .Medium-Text-Bold{
+    margin-bottom: 5px;
+}
+
+.inputTextAlter .input{
+    background-color: #FFFFFF;
+    border: none;
+    margin-left: 15px;
+}
+
+.inputTextAlter .optionsInput{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inputTextAlter .optionsInput p{
+    color: var(--select);
+    border-left: 1px solid var(--disable);
+    padding: 0 15px;
+    cursor: pointer;
+}

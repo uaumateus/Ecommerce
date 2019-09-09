@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
+
+import iconCategories from './assets/categories_icon.svg';
+import iconSearch from './assets/search_icon.svg';
+import iconFavorite from './assets/favorite_icon.svg';
+import iconBag from './assets/bag_icon.svg';
+import iconPerson from './assets/person_icon.svg';
 
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
         this.state = {
             showRegister: false,
-            showLogin: false
+            showLogin: false,
+            logged: true,
+            userType: 2 // 1 - user comum   /   2 - admin
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -38,13 +47,58 @@ export default class Navbar extends Component{
                     onChangeState={this.handleModalRegister}
                     handlerLogin={this.handleModalLogin}
                 />
-                <h4>LOGOAQUI</h4>
+                <div className="containerLogo">
+                    <Link to="/"><p className="Large-Text-Bold">LOGOAQUI</p></Link>
+                    <article>
+                        <img src={iconCategories} />
+                        <p className="Medium-Text-Regular">Categorias</p>
+                    </article>
+                </div>
+                
                 <div className="optionsNavbar">
-                    <h4>icon1</h4>
-                    <h4>icon2</h4>
-                    <h4>icon3</h4>
-                    <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
-                    <button className="button buttonSecundary" onClick={this.handleModalLogin}>Login</button>
+                    <img src={iconSearch} className="iconNavbar" />
+                    <img src={iconFavorite} className="iconNavbar" />
+                    <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
+
+                    {this.state.logged ?
+                        <>
+                            {this.state.userType == 1 &&
+                                <div className="profileOptions">
+                                    <img src={iconPerson} className="iconNavbar" />
+                                    <ul className="dropdownUser">
+                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
+                                        <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
+                                        <li className="Medium-Text-Regular">Sair</li>
+                                    </ul>
+                                </div>
+                            }
+                            {this.state.userType == 2 &&
+                                <div className="profileOptions">
+                                    <img src={iconPerson} className="iconNavbar" />
+                                    <ul className="dropdownUser">
+                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
+                                        <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
+                                        <Link to="/clientes"><li className="Medium-Text-Regular liLine ">Clientes</li></Link>
+                                        <Link to="/estoque"><li className="Medium-Text-Regular liLine">Estoque</li></Link>
+                                        <li className="Medium-Text-Regular liLine reports">Relatórios
+                                            <ul className="subDropdown">
+                                                <Link to="/relatorio-compras-por-cliente"><li className="Medium-Text-Regular liLine">Compras por cliente</li></Link>
+                                                <Link to="/relatorio-produtos-em-falta"><li className="Medium-Text-Regular liLine">Produtos em falta</li></Link>
+                                                <Link to="/relatorio-valor-diario"><li className="Medium-Text-Regular">Valor diário</li></Link>
+                                            </ul>
+                                        </li>
+                                        <li className="Medium-Text-Regular">Sair</li>
+                                    </ul>
+                                </div>
+                            }
+                        </>
+                    :
+                        <>
+                            <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
+                            <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
+                        </>
+                    }                    
+
                 </div>
             </header>
         )

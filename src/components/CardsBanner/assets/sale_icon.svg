@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="163.663" height="121.4" viewBox="0 0 163.663 121.4">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-3 {
+        stroke: #191919;
+      }
+
+      .cls-2 {
+        fill: #191919;
+        font-size: 10px;
+        font-family: LexendPeta-Regular, Lexend Peta;
+      }
+
+      .cls-3, .cls-5 {
+        fill: none;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="sale_icon" transform="translate(-1337.242 -1416.171)">
+    <g id="Retângulo_7" data-name="Retângulo 7" class="cls-1" transform="matrix(0.848, -0.53, 0.53, 0.848, 1337.242, 1490.297)">
+      <rect class="cls-4" width="109.258" height="55.744" rx="9"/>
+      <rect class="cls-5" x="0.5" y="0.5" width="108.258" height="54.744" rx="8.5"/>
+    </g>
+    <g id="Elipse_7" data-name="Elipse 7" class="cls-1" transform="matrix(0.848, -0.53, 0.53, 0.848, 1427.045, 1461.181)">
+      <ellipse class="cls-4" cx="4.801" cy="4.801" rx="4.801" ry="4.801"/>
+      <ellipse class="cls-5" cx="4.801" cy="4.801" rx="4.301" ry="4.301"/>
+    </g>
+    <text id="Promoção" class="cls-2" transform="matrix(0.848, -0.53, 0.53, 0.848, 1362.999, 1511.385)"><tspan x="0" y="0">Promoção</tspan></text>
+    <path id="Caminho_9" data-name="Caminho 9" class="cls-3" d="M1444.363,1454.25s0,66.128,37.573,14.027,43.409,30.409-1.528-27.879-36.045-6.573-36.045-6.573" transform="translate(-11.733 4)"/>
+  </g>
+</svg>

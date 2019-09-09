@@ -17,3 +17,86 @@
     align-items: center;
     padding-right: 50px;
 }
+
+.navbar .iconNavbar{
+    width: 20px;
+    margin-right: 25px;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.navbar .buttonSecundary{
+    margin-right: 10px;
+}
+
+.navbar .containerLogo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.navbar .containerLogo .Large-Text-Bold{
+    color: var(--textDark);
+}
+
+.navbar .containerLogo article{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+    cursor: pointer;
+    color: var(--disable);
+}
+
+.navbar .containerLogo article img{
+    width: 20px;
+    margin-right: 8px;
+}
+
+.navbar .dropdownUser{
+    position: absolute;
+    list-style: none;
+    margin-left: -160px;
+    margin-top: -5px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px;
+    padding: 0;
+    display: none;
+}
+
+.navbar .profileOptions:hover .dropdownUser{
+    display: block;
+}
+
+.navbar .dropdownUser li{
+    padding: 10px 24px;
+    color: var(--textDark);
+    cursor: pointer;
+}
+
+.navbar .dropdownUser li:hover{
+    color: var(--primary);
+}
+
+.navbar .dropdownUser .liLine{
+    border-bottom: 1px solid #B4B4B4;
+}
+
+.navbar .subDropdown{
+    position: absolute;
+    list-style: none;
+    width: max-content;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 0;
+    right: 192px;
+    margin-top: -30px;
+    display: none;
+}
+
+.navbar .reports:hover .subDropdown{
+    display: block;
+}
