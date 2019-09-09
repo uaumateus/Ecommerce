@@ -17,7 +17,8 @@ export default class Navbar extends Component{
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: true
+            logged: true,
+            userType: 2 // 1 - user comum   /   2 - admin
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -60,22 +61,43 @@ export default class Navbar extends Component{
                     <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
 
                     {this.state.logged ?
-                        <div className="profileOptions">
-                            <img src={iconPerson} className="iconNavbar" />
-                            <ul className="dropdownUser">
-                                <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
-                                <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
-                                <li className="Medium-Text-Regular">Sair</li>
-                            </ul>
-                        </div>
+                        <>
+                            {this.state.userType == 1 &&
+                                <div className="profileOptions">
+                                    <img src={iconPerson} className="iconNavbar" />
+                                    <ul className="dropdownUser">
+                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
+                                        <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
+                                        <li className="Medium-Text-Regular">Sair</li>
+                                    </ul>
+                                </div>
+                            }
+                            {this.state.userType == 2 &&
+                                <div className="profileOptions">
+                                    <img src={iconPerson} className="iconNavbar" />
+                                    <ul className="dropdownUser">
+                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
+                                        <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
+                                        <li className="Medium-Text-Regular liLine ">Clientes</li>
+                                        <li className="Medium-Text-Regular liLine">Estoque</li>
+                                        <li className="Medium-Text-Regular liLine reports">Relatórios
+                                            <ul className="subDropdown">
+                                                <li className="Medium-Text-Regular liLine">Compras por cliente</li>
+                                                <li className="Medium-Text-Regular liLine">Produtos em falta</li>
+                                                <li className="Medium-Text-Regular">Valor diário</li>
+                                            </ul>
+                                        </li>
+                                        <li className="Medium-Text-Regular">Sair</li>
+                                    </ul>
+                                </div>
+                            }
+                        </>
                     :
                         <>
                             <button className="button buttonSecundary" onClick={this.handleModalLogin}>Entrar</button>
                             <button className="button buttonPrimary" onClick={this.handleModalRegister}>Cadastre-se</button>
                         </>
-                    }
-
-                    
+                    }                    
 
                 </div>
             </header>

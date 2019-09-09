@@ -79,3 +79,20 @@
 .navbar .dropdownUser .liLine{
     border-bottom: 1px solid #B4B4B4;
 }
+
+.navbar .subDropdown{
+    position: absolute;
+    list-style: none;
+    width: max-content;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 0;
+    right: 192px;
+    margin-top: -30px;
+    display: none;
+}
+
+.navbar .reports:hover .subDropdown{
+    display: block;
+}
