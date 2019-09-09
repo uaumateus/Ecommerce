@@ -26,13 +26,13 @@
     color: var(--disable);
 }
 
-.accordion .header article{
+.accordion .header article, .accordionStock .container article{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.accordion .header article .Medium-Text-Regular{
+.accordion .header article .Medium-Text-Regular, .accordionStock .container article .Medium-Text-Regular{
     margin-right: 10px;
 }
 
@@ -44,7 +44,7 @@
     align-items: center;
 }
 
-.accordionHistoric .container{
+.accordionHistoric .container, .accordionStock .container{
     grid-template-columns: 1fr 1fr 1fr 50px;
 }
 
@@ -53,17 +53,17 @@
     grid-gap: 15%;
 }
 
-.accordionHistoric .containerProduct{
+.accordionHistoric .containerProduct, .accordionStock .containerProduct{
     display: flex;
     align-items: center;
 }
 
-.accordionHistoric .containerProduct img{
+.accordionHistoric .containerProduct img, .accordionStock .containerProduct img{
     height: 100px;
     margin-right: 15px;
 }
 
-.accordionHistoric .titleProduct{
+.accordionHistoric .titleProduct, .accordionStock .titleProduct{
     color: var(--select);
     cursor: pointer;
 }
@@ -89,4 +89,25 @@
 .accordion .iconOpen{
     width: 18px;
     transform: rotate(45deg);
+}
+
+.accordionStock .containerTitleProduct{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.accordionStock .containerTitleProduct p{
+    margin-right: 20px;
+    border-right: 1px solid var(--disable); 
+    padding-right: 20px;
+}
+
+.accordionStock .containerTitleProduct .buttonProduct{
+    color: var(--select);
+}
+
+.accordionStock .container{
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
 }
