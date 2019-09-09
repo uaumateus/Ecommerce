@@ -82,9 +82,9 @@ export default class Navbar extends Component{
                                         <li className="Medium-Text-Regular liLine">Estoque</li>
                                         <li className="Medium-Text-Regular liLine reports">Relatórios
                                             <ul className="subDropdown">
-                                                <li className="Medium-Text-Regular liLine">Compras por cliente</li>
-                                                <li className="Medium-Text-Regular liLine">Produtos em falta</li>
-                                                <li className="Medium-Text-Regular">Valor diário</li>
+                                                <Link to="/relatorio-compras-por-cliente"><li className="Medium-Text-Regular liLine">Compras por cliente</li></Link>
+                                                <Link to="/relatorio-produtos-em-falta"><li className="Medium-Text-Regular liLine">Produtos em falta</li></Link>
+                                                <Link to="/relatorio-valor-diario"><li className="Medium-Text-Regular">Valor diário</li></Link>
                                             </ul>
                                         </li>
                                         <li className="Medium-Text-Regular">Sair</li>
