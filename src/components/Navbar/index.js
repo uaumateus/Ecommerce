@@ -48,7 +48,7 @@ export default class Navbar extends Component{
                     handlerLogin={this.handleModalLogin}
                 />
                 <div className="containerLogo">
-                    <p className="Large-Text-Bold">LOGOAQUI</p>
+                    <Link to="/"><p className="Large-Text-Bold">LOGOAQUI</p></Link>
                     <article>
                         <img src={iconCategories} />
                         <p className="Medium-Text-Regular">Categorias</p>
