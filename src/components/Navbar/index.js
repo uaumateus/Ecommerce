@@ -17,7 +17,7 @@ export default class Navbar extends Component{
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: true,
+            logged: false,
             userType: 2 // 1 - user comum   /   2 - admin
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
