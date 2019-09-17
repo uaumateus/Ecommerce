@@ -9,6 +9,6 @@
 .contentInputText{
     border: 1px solid var(--disable);
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 3px;
     margin-bottom: 20px;
 }
