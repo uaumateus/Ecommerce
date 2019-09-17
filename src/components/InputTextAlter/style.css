@@ -17,6 +17,7 @@
     background-color: #FFFFFF;
     border: none;
     margin-left: 15px;
+    outline: none;
 }
 
 .inputTextAlter .optionsInput{
