@@ -1,0 +1,10 @@
+.modals{
+    position: fixed;
+    z-index: 200;
+}
+
+.stock .optionsStock{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 20px;
+}

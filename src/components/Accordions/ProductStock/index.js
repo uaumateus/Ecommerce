@@ -20,11 +20,8 @@ export default class ProductStock extends Component{
                 <div className="header" onClick={this.handleAccordion}>
                     <p className="Medium-Text-Bold">{this.props.category}</p>
                     <p className="Medium-Text-Regular">[ 8 produtos ]</p>
-                    {this.state.accordion ?
-                        <img src={iconClose} className="iconClose"/>
-                        :
-                        <img src={iconClose} className="iconOpen"/>
-                    }
+                    <p className="buttonProduct Medium-Text-Regular options">editar</p>
+                    <p className="buttonProduct Medium-Text-Regular options">remover</p>
                 </div>
                 {this.state.accordion &&
                 <>

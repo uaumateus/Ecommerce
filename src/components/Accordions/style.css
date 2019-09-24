@@ -22,6 +22,16 @@
     grid-template-columns: auto 1fr 50px;
 }
 
+.accordionStock .header{
+    grid-template-columns: auto 1fr auto auto;
+}
+
+.accordionStock .header .options{
+    color: var(--select);
+    border-left: 1px solid var(--disable);
+    padding-left: 24px;
+}
+
 .accordionCostumers .Medium-Text-Regular{
     color: var(--disable);
 }

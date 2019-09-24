@@ -23,3 +23,16 @@
     width: max-content;
     margin: 24px 0;
 }
+
+.account .alterPassword, .account .deleteAccount{
+    width: 80%;
+    text-align: center;
+}
+
+.account .alterPassword p, .account .deleteAccount p{
+    margin-bottom: 10px;
+}
+
+.account .alterPassword .button, .account .deleteAccount .button{
+    margin: 0 5px;
+}

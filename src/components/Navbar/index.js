@@ -49,17 +49,31 @@ export default class Navbar extends Component{
                 />
                 <div className="containerLogo">
                     <Link to="/"><p className="Large-Text-Bold">LOGOAQUI</p></Link>
-                    <article>
-                        <img src={iconCategories} />
-                        <p className="Medium-Text-Regular">Categorias</p>
-                    </article>
+                    <div className="containerCategories">
+                        <article>
+                            <img src={iconCategories} />
+                            <p className="Medium-Text-Regular">Categorias</p>
+                        </article>
+                        <ul className="dropdownCategories">
+                            <div>
+                                <li className="Large-Text-Regular">Categoria 1</li>
+                                <li className="Large-Text-Regular">Categoria 2</li>
+                                <li className="Large-Text-Regular">Categoria 3</li>
+                                <li className="Large-Text-Regular">Categoria 4</li>
+                                <li className="Large-Text-Regular">Categoria 5</li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div className="optionsNavbar">
                     <img src={iconSearch} className="iconNavbar" />
-                    <img src={iconFavorite} className="iconNavbar" />
-                    <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
-
+                    {this.state.userType == 1 &&
+                        <>
+                            <img src={iconFavorite} className="iconNavbar" />
+                            <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
+                        </>
+                    }
                     {this.state.logged ?
                         <>
                             {this.state.userType == 1 &&
@@ -76,7 +90,6 @@ export default class Navbar extends Component{
                                 <div className="profileOptions">
                                     <img src={iconPerson} className="iconNavbar" />
                                     <ul className="dropdownUser">
-                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                         <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
                                         <Link to="/clientes"><li className="Medium-Text-Regular liLine ">Clientes</li></Link>
                                         <Link to="/estoque"><li className="Medium-Text-Regular liLine">Estoque</li></Link>

@@ -52,3 +52,47 @@
     width: 16px;
     cursor: pointer;
 }
+
+.inputFileHidden{
+    display: none;
+}
+
+.inputFile{
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    background: transparent linear-gradient(90deg, var(--secundary) 0%, var(--primary) 100%) 0% 0% no-repeat padding-box;
+    color: var(--textLight);
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.inputDataList{
+    display: flex;
+    width: 90%;
+    border: 1px solid var(--disable);
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.containerCategorys{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+}
+
+.containerCategorys .button{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectedCategorys{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, auto));
+    grid-gap: 10px;
+    margin: 10px 0;
+    color: var(--textDark);
+}
