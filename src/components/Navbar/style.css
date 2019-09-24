@@ -47,6 +47,7 @@
     margin-left: 40px;
     cursor: pointer;
     color: var(--disable);
+    padding: 25px 0;
 }
 
 .navbar .containerLogo article img{
@@ -100,4 +101,35 @@
 
 .navbar .reports:hover .subDropdown{
     display: block;
+}
+
+.navbar .containerCategories:hover .dropdownCategories{
+    display: block;
+}
+
+.navbar .dropdownCategories{
+    background: #FFFFFF;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin-top: -2px;
+    /* border-top: 1px solid #00000029; */
+    display: none;
+    box-shadow: 0px 3px 3px #00000029;
+}
+
+.navbar .dropdownCategories div{
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.navbar .dropdownCategories div li{
+    list-style: none;
+    color: var(--textDark);
+    cursor: pointer;
+}
+
+.navbar .dropdownCategories div li:hover{
+    color: var(--primary);
 }
