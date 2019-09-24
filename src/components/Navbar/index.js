@@ -57,9 +57,12 @@ export default class Navbar extends Component{
                 
                 <div className="optionsNavbar">
                     <img src={iconSearch} className="iconNavbar" />
-                    <img src={iconFavorite} className="iconNavbar" />
-                    <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
-
+                    {this.state.userType == 1 &&
+                        <>
+                            <img src={iconFavorite} className="iconNavbar" />
+                            <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
+                        </>
+                    }
                     {this.state.logged ?
                         <>
                             {this.state.userType == 1 &&
@@ -76,7 +79,6 @@ export default class Navbar extends Component{
                                 <div className="profileOptions">
                                     <img src={iconPerson} className="iconNavbar" />
                                     <ul className="dropdownUser">
-                                        <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                         <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
                                         <Link to="/clientes"><li className="Medium-Text-Regular liLine ">Clientes</li></Link>
                                         <Link to="/estoque"><li className="Medium-Text-Regular liLine">Estoque</li></Link>

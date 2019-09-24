@@ -55,6 +55,7 @@
 }
 
 .navbar .dropdownUser{
+    min-width: 200px;
     position: absolute;
     list-style: none;
     margin-left: -160px;
