@@ -1,0 +1,27 @@
+.alertMessage{
+    background: transparent linear-gradient(90deg, var(--secundary) 0%, var(--primary) 100%) 0% 0% no-repeat padding-box;
+    padding: 15px 24px;
+    color: var(--textLight);
+    position: fixed;
+    top: 90px;
+    right: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    animation: showMessage 3s;
+    z-index: 80;
+}
+
+@keyframes showMessage{
+    0% {
+        right: -300px;
+    }
+    30% {
+        right: 40px;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
