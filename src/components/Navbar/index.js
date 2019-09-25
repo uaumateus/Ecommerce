@@ -4,7 +4,6 @@ import './style.css';
 
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
-import InputText from '../InputText';
 
 import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
