@@ -4,7 +4,7 @@
     width: 100vw;
     box-shadow: 0px 3px 6px #00000029;
     display: grid;
-    grid-template-columns: 300px auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
     position: fixed;
     z-index: 100;
@@ -24,6 +24,20 @@
     padding: 10px 5px;
     cursor: pointer;
 }
+
+.navbar .inputSearch{
+    width: 25vw;
+    padding: 7px 15px;
+    border-radius: 50px;
+    border: 1px solid var(--disable);
+    color: var(--textDark);
+    outline: none;
+    margin: 0 15px;
+}
+
+.navbar .showSearch{ animation: showSearch .6s; }
+
+.navbar .closeSearch{ animation: closeSearch .6s; }
 
 .navbar .buttonSecundary{
     margin-right: 10px;
@@ -156,5 +170,27 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes showSearch{
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 25vw;
+        opacity: 1;
+    }
+}
+
+@keyframes closeSearch{
+    0% {
+        width: 25vw;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        opacity: 0;
     }
 }

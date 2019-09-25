@@ -4,6 +4,7 @@ import './style.css';
 
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
+import InputText from '../InputText';
 
 import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
@@ -18,7 +19,9 @@ export default class Navbar extends Component{
             showRegister: false,
             showLogin: false,
             logged: true,
-            userType: 2 // 1 - user comum   /   2 - admin
+            userType: 2, // 1 - user comum   /   2 - admin
+            showSearch: false,
+            classSearch: "inputSearch Medium-Text-Regular showSearch"
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -33,6 +36,20 @@ export default class Navbar extends Component{
         const showLogin = !this.state.showLogin;
         this.setState({ showLogin });
     };
+
+    handlerSearch = () => {
+        const showSearch = !this.state.showSearch;
+        if(showSearch == true){
+            this.setState({ showSearch });
+        }
+        else{
+            this.setState({classSearch: "inputSearch Medium-Text-Regular closeSearch"});
+            setTimeout(()=>{
+                this.setState({ showSearch });
+                this.setState({classSearch: "inputSearch Medium-Text-Regular showSearch"});
+            }, 600);
+        }
+    }
 
     render(){
         return(
@@ -67,7 +84,10 @@ export default class Navbar extends Component{
                 </div>
                 
                 <div className="optionsNavbar">
-                    <img src={iconSearch} className="iconNavbar" />
+                    {this.state.showSearch &&
+                        <input type="text" placeholder="Busca" className={this.state.classSearch}/>
+                    }
+                    <img src={iconSearch} className="iconNavbar" onClick={this.handlerSearch}/>
                     {this.state.userType == 1 &&
                         <>
                             <img src={iconFavorite} className="iconNavbar" />
