@@ -22,13 +22,15 @@ export default class SimilarPages extends Component {
     const { match } = this.props;
     return (
         <div className="content">
-          {match.params.idCat &&
-            <BreadCrumb actualPage={match.params.idCat} />
-          }
-          {match.params.favoritos == "favoritos" &&
+          {match.params.favoritos &&
             <BreadCrumb actualPage="Meus favoritos" />
           }
-          
+          {match.params.description &&
+            <BreadCrumb actualPage={match.params.description} />
+          }
+          {match.params.term &&
+            <BreadCrumb actualPage={"Busca por: ''" + match.params.term + "''"} />
+          }
 
           <CardList products={products} />
             

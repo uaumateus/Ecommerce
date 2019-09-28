@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './style.css';
 
 import Login from '../Modals/Login';
@@ -19,7 +19,7 @@ const categories = [
     {description: "Vestidos"},
 ]
 
-export default class Navbar extends Component{
+class Navbar extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,8 @@ export default class Navbar extends Component{
             logged: true,
             userType: 1, // 1 - user comum   /   2 - admin
             showSearch: false,
-            classSearch: "inputSearch Medium-Text-Regular showSearch"
+            classSearch: "inputSearch Medium-Text-Regular showSearch",
+            searchTerm: null
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -58,6 +59,20 @@ export default class Navbar extends Component{
         }
     }
 
+    onKeyDown = e => {
+        const { searchTerm } = this.state;
+
+        if (e.key === 'Enter' && searchTerm !== '') {
+            this.setState({ searchTerm: '' });
+            this.props.history.push(`/busca/${searchTerm}`);
+            e.target.blur();
+        }
+    }
+
+    handleSearchTerm = e => {
+        this.setState({ searchTerm: e.target.value });
+    }
+
     render(){
         return(
             <header className="navbar">
@@ -81,7 +96,7 @@ export default class Navbar extends Component{
                         <ul className="dropdownCategories">
                             <div>
                                 {categories.map((item, key) => (
-                                    <Link to={{ pathname: item.description }}><li className="Large-Text-Regular">{item.description}</li></Link>
+                                    <Link to={`/categorias/${item.description}`}><li className="Large-Text-Regular">{item.description}</li></Link>
                                 ))}
                             </div>
                         </ul>
@@ -90,7 +105,7 @@ export default class Navbar extends Component{
                 
                 <div className="optionsNavbar">
                     {this.state.showSearch &&
-                        <input type="text" placeholder="Busca" className={this.state.classSearch}/>
+                        <input type="text" placeholder="Busca" className={this.state.classSearch} onChange={this.handleSearchTerm} onKeyDown={this.onKeyDown} value={this.state.searchTerm}/>
                     }
                     <img src={iconSearch} className="iconNavbar" onClick={this.handlerSearch}/>
                     {(this.state.userType == 1 && this.state.logged) &&
@@ -142,3 +157,5 @@ export default class Navbar extends Component{
         )
     }
 }
+
+export default withRouter(Navbar);
