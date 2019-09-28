@@ -64,6 +64,7 @@ class Navbar extends Component{
 
         if (e.key === 'Enter' && searchTerm !== '') {
             this.setState({ searchTerm: '' });
+            this.handlerSearch();
             this.props.history.push(`/busca/${searchTerm}`);
             e.target.blur();
         }
