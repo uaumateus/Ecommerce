@@ -22,7 +22,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/sacola" exact component={Bag}/>
-        <Route path="/:favoritos" exact component={SimilarPages} />
+        <Route path="/favoritos" exact component={SimilarPages} />
         <Route path="/categorias/:description" exact component={SimilarPages} />
         <Route path="/busca/:term" exact component={SimilarPages} />
         <Route path="/conta" exact component={Account}/>

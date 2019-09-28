@@ -19,10 +19,10 @@ const products = [
 
 export default class SimilarPages extends Component {
   render() {
-    const { match } = this.props;
+    const { match, location } = this.props;
     return (
         <div className="content">
-          {match.params.favoritos &&
+          {location.pathname == "/favoritos" &&
             <BreadCrumb actualPage="Meus favoritos" />
           }
           {match.params.description &&
