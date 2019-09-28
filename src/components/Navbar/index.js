@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './style.css';
 
 import Login from '../Modals/Login';
@@ -11,16 +11,25 @@ import iconFavorite from './assets/favorite_icon.svg';
 import iconBag from './assets/bag_icon.svg';
 import iconPerson from './assets/person_icon.svg';
 
-export default class Navbar extends Component{
+const categories = [
+    {description: "Blusas"},
+    {description: "Camisas"},
+    {description: "Calças"},
+    {description: "Saias"},
+    {description: "Vestidos"},
+]
+
+class Navbar extends Component{
     constructor(props) {
         super(props);
         this.state = {
             showRegister: false,
             showLogin: false,
             logged: true,
-            userType: 2, // 1 - user comum   /   2 - admin
+            userType: 1, // 1 - user comum   /   2 - admin
             showSearch: false,
-            classSearch: "inputSearch Medium-Text-Regular showSearch"
+            classSearch: "inputSearch Medium-Text-Regular showSearch",
+            searchTerm: null
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -50,6 +59,21 @@ export default class Navbar extends Component{
         }
     }
 
+    onKeyDown = e => {
+        const { searchTerm } = this.state;
+
+        if (e.key === 'Enter' && searchTerm !== '') {
+            this.setState({ searchTerm: '' });
+            this.handlerSearch();
+            this.props.history.push(`/busca/${searchTerm}`);
+            e.target.blur();
+        }
+    }
+
+    handleSearchTerm = e => {
+        this.setState({ searchTerm: e.target.value });
+    }
+
     render(){
         return(
             <header className="navbar">
@@ -72,11 +96,9 @@ export default class Navbar extends Component{
                         </article>
                         <ul className="dropdownCategories">
                             <div>
-                                <li className="Large-Text-Regular">Categoria 1</li>
-                                <li className="Large-Text-Regular">Categoria 2</li>
-                                <li className="Large-Text-Regular">Categoria 3</li>
-                                <li className="Large-Text-Regular">Categoria 4</li>
-                                <li className="Large-Text-Regular">Categoria 5</li>
+                                {categories.map((item, key) => (
+                                    <Link to={`/categorias/${item.description}`}><li className="Large-Text-Regular">{item.description}</li></Link>
+                                ))}
                             </div>
                         </ul>
                     </div>
@@ -84,14 +106,14 @@ export default class Navbar extends Component{
                 
                 <div className="optionsNavbar">
                     {this.state.showSearch &&
-                        <input type="text" placeholder="Busca" className={this.state.classSearch}/>
+                        <input type="text" placeholder="Busca" className={this.state.classSearch} onChange={this.handleSearchTerm} onKeyDown={this.onKeyDown} value={this.state.searchTerm}/>
                     }
                     <img src={iconSearch} className="iconNavbar" onClick={this.handlerSearch}/>
-                    {this.state.userType == 1 &&
-                        <>
-                            <img src={iconFavorite} className="iconNavbar" />
-                            <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
-                        </>
+                    {(this.state.userType == 1 && this.state.logged) &&
+                        <Link to="/favoritos"><img src={iconFavorite} className="iconNavbar" /></Link>
+                    }
+                    {(this.state.userType == 1 || !this.state.logged) &&
+                        <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
                     }
                     {this.state.logged ?
                         <>
@@ -136,3 +158,5 @@ export default class Navbar extends Component{
         )
     }
 }
+
+export default withRouter(Navbar);

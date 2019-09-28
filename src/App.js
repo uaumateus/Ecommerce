@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Bag from './pages/Bag';
+import SimilarPages from './pages/SimilarPages';
 import Account from './pages/Account';
 import HistoricBuys from './pages/HistoricBuys';
 import ReportPurchasesPerCustomer from './pages/Admin/Reports/PurchasesPerCustomer';
@@ -21,6 +22,9 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/sacola" exact component={Bag}/>
+        <Route path="/:favoritos" exact component={SimilarPages} />
+        <Route path="/categorias/:description" exact component={SimilarPages} />
+        <Route path="/busca/:term" exact component={SimilarPages} />
         <Route path="/conta" exact component={Account}/>
         <Route path="/historico" exact component={HistoricBuys}/>
         <Route path="/relatorio-compras-por-cliente" exact component={ReportPurchasesPerCustomer} />
