@@ -11,14 +11,22 @@ import iconFavorite from './assets/favorite_icon.svg';
 import iconBag from './assets/bag_icon.svg';
 import iconPerson from './assets/person_icon.svg';
 
+const categories = [
+    {description: "Blusas"},
+    {description: "Camisas"},
+    {description: "Calças"},
+    {description: "Saias"},
+    {description: "Vestidos"},
+]
+
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: false,
-            userType: 2, // 1 - user comum   /   2 - admin
+            logged: true,
+            userType: 1, // 1 - user comum   /   2 - admin
             showSearch: false,
             classSearch: "inputSearch Medium-Text-Regular showSearch"
         };
@@ -72,11 +80,9 @@ export default class Navbar extends Component{
                         </article>
                         <ul className="dropdownCategories">
                             <div>
-                                <li className="Large-Text-Regular">Categoria 1</li>
-                                <li className="Large-Text-Regular">Categoria 2</li>
-                                <li className="Large-Text-Regular">Categoria 3</li>
-                                <li className="Large-Text-Regular">Categoria 4</li>
-                                <li className="Large-Text-Regular">Categoria 5</li>
+                                {categories.map((item, key) => (
+                                    <Link to={{ pathname: item.description }}><li className="Large-Text-Regular">{item.description}</li></Link>
+                                ))}
                             </div>
                         </ul>
                     </div>
@@ -87,11 +93,11 @@ export default class Navbar extends Component{
                         <input type="text" placeholder="Busca" className={this.state.classSearch}/>
                     }
                     <img src={iconSearch} className="iconNavbar" onClick={this.handlerSearch}/>
-                    {this.state.userType == 1 &&
-                        <>
-                            <img src={iconFavorite} className="iconNavbar" />
-                            <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
-                        </>
+                    {(this.state.userType == 1 && this.state.logged) &&
+                        <Link to="/favoritos"><img src={iconFavorite} className="iconNavbar" /></Link>
+                    }
+                    {(this.state.userType == 1 || !this.state.logged) &&
+                        <Link to="/sacola"><img src={iconBag} className="iconNavbar"/></Link>
                     }
                     {this.state.logged ?
                         <>
