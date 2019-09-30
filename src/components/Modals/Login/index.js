@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
 import '../Register/style.css';
+import api from '../../../services/api';
+
 import close from '../assets/close.svg';
 
 import InputText from '../../InputText';
 
 export default class Login extends Component {
+    state = {
+        username: null,
+        password: null
+    }
+
+    onChange = e => {
+        if(e.target.name === "username")
+            this.setState({username: e.target.value});
+        else if(e.target.name === "password")
+            this.setState({password: e.target.value});
+    }
+
     closeModal = () => {
         this.props.onChangeState();
     };
@@ -13,6 +27,19 @@ export default class Login extends Component {
         this.props.onChangeState();
         this.props.handlerRegister();
     };
+
+    goLogin = async () => {
+        const { username, password } = this.state;
+        await api.post('/login', {
+            login: username, 
+            password: password
+        }).then(resp => {  
+            console.log(resp)
+        })
+        .catch(error => {          
+            console.log(error)       
+        })
+    }
     
     render(){
         if (!this.props.show) {
@@ -27,11 +54,9 @@ export default class Login extends Component {
                         <a onClick={this.closeModal}><img src={close} className="iconClose" /></a>
                     </div>
                     <div className="contentModal">
-                        <form>
-                            <InputText placeholder="Login" type="text"/>
-                            <InputText placeholder="Senha" type="password"/>
-                            <input type="submit" value="Entrar" className="button buttonPrimary"/>
-                        </form>
+                        <InputText placeholder="Login" type="text" name="username" onChange={this.onChange}/>
+                        <InputText placeholder="Senha" type="password" name="password" onChange={this.onChange}/>
+                        <button className="button buttonPrimary" onClick={this.goLogin}>Entrar</button>
                     </div>
                     <div className="footerModal">
                         <p className="Medium-Text-Regular">Não tem uma conta?</p>

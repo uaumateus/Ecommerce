@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
+import api from '../../../services/api';
 import close from '../assets/close.svg';
 
 import InputText from '../../InputText';
+import AlertMessage from '../../AlertMessage';
 
 export default class Register extends Component {
     state = {
@@ -20,38 +22,38 @@ export default class Register extends Component {
     }
 
     onChange = e => {
-        if(e.target.name == "name"){
+        if(e.target.name === "name"){
             this.setState({name: e.target.value});
-            if(e.target.value != null && e.target.value != ""){
+            if(e.target.value !== null && e.target.value !== ""){
                 let testName = /[^a-zà-ú]/gi;
                 if(testName.test(e.target.value)) //Apenas letras.
                     this.setState({errorName: false})
                 else   
                     this.setState({errorName: "Nome e sobrenome, apenas letras"})
             }
-        }else if(e.target.name == "adress"){
+        }else if(e.target.name === "adress"){
             this.setState({adress: e.target.value});
-        }else if(e.target.name == "email"){
+        }else if(e.target.name === "email"){
             this.setState({email: e.target.value});
-            if(e.target.value != null && e.target.value != ""){
+            if(e.target.value !== null && e.target.value !== ""){
                 let testEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
                 if(testEmail.test(e.target.value))
                     this.setState({errorEmail: false})
                 else   
                     this.setState({errorEmail: "E-mail inválido"})
             }
-        }else if(e.target.name == "user"){
+        }else if(e.target.name === "user"){
             this.setState({user: e.target.value});
-            if(e.target.value != null && e.target.value != ""){
+            if(e.target.value !== null && e.target.value !== ""){
                 let testUser = /^.{6,20}$/;
                 if(testUser.test(e.target.value))
                     this.setState({errorUser: false})
                 else   
                     this.setState({errorUser: "Deve ter entre 6 e 20 caracteres"})
             }
-        }else if(e.target.name == "password"){
+        }else if(e.target.name === "password"){
             this.setState({password: e.target.value});
-            if(e.target.value != null && e.target.value != ""){
+            if(e.target.value !== null && e.target.value !== ""){
                 let testPassword = /^.{8,20}$/;
                 if(testPassword.test(e.target.value)){
                     this.setState({errorPassword: false})
@@ -75,19 +77,32 @@ export default class Register extends Component {
         this.props.handlerLogin();
     };
 
-    goRegister = () => {
-        if(this.state.name != "" && this.state.name != null && 
-            this.state.email != "" && this.state.email != null && 
-            this.state.adress != "" && this.state.adress != null &&
-            this.state.name != "" && this.state.name != null &&
-            this.state.password != "" && this.state.password != null){
+    goRegister = async () => {
+        if(this.state.name !== "" && this.state.name !== null && 
+            this.state.email !== "" && this.state.email !== null && 
+            this.state.adress !== "" && this.state.adress !== null &&
+            this.state.user !== "" && this.state.user !== null &&
+            this.state.password !== "" && this.state.password !== null){
 
                 if(!this.state.errorName && 
                     !this.state.errorEmail &&
                     !this.state.errorAdress &&
                     !this.state.errorUser &&
                     !this.state.errorPassword){
-                        alert("Pode cadastrar");
+                        
+                        const {name, email, adress, user, password} = this.state;
+                        await api.post('/register', {
+                                name: name, 
+                                adress: adress, 
+                                email: email, 
+                                login: user, 
+                                password: password
+                        }).then(resp => {  
+                            this.openModalLogin();
+                        })
+                        .catch(error => {          
+                            this.setState({otherError: "Ocorreu algum erro"});     
+                        })
                     }
 
         }else{
