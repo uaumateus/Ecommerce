@@ -1,0 +1,18 @@
+.ControllAmount{
+    border: 1px solid var(--textDark);
+    height: 23px;
+    border-radius: 20px;
+    /* display: grid !important;
+    grid-template-columns: 10px 1fr 10px !important;
+    grid-gap: 10px !important; */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 0 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.ControllAmount .Large-Text-Bold{
+    cursor: pointer;
+}

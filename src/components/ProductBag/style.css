@@ -35,22 +35,6 @@
     cursor: pointer;
 }
 
-.productBag .valuePrice{
-    border: 1px solid var(--textDark);
-    height: 23px;
-    border-radius: 20px;
-    display: grid;
-    grid-template-columns: 10px 1fr 10px;
-    grid-gap: 10px;
-    padding: 0 10px;
-    align-items: center;
-    text-align: center;
-}
-
-.productBag .valuePrice .Large-Text-Bold{
-    cursor: pointer;
-}
-
 .productBag .containerPrice{
     display: flex;
     flex-direction: row;

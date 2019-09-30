@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="31.259" viewBox="0 0 34 31.259">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="favorite_icon" class="cls-1" d="M2.512,16.531h.069A10.132,10.132,0,0,1,0,9.7C0,4.342,3.976,0,8.881,0A8.647,8.647,0,0,1,16,3.9,8.648,8.648,0,0,1,23.119,0C28.024,0,32,4.342,32,9.7A10.111,10.111,0,0,1,29.259,16.7h.053l-13.4,12.557Z" transform="translate(1 1)"/>
+</svg>
