@@ -3,14 +3,15 @@ import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import './style.css';
 
-import image1 from './assets/banner_image.png';
+import image1 from './assets/image1.png';
+import image2 from './assets/image2.jpg';
+import image3 from './assets/image3.jpg';
 
 const BannerInitial = () => {
     const content = [
         {image: image1, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
-        {image: image1, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
-        {image: image1, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
-        {image: image1, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."}
+        {image: image2, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
+        {image: image3, title: "Moda Praia", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
     ]
     return(
         <div className="containerBanner">

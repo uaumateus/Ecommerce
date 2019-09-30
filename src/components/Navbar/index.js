@@ -17,6 +17,7 @@ const categories = [
     {description: "Calças"},
     {description: "Saias"},
     {description: "Vestidos"},
+    {description: "Tênis"},
 ]
 
 class Navbar extends Component{
@@ -88,7 +89,7 @@ class Navbar extends Component{
                     handlerLogin={this.handleModalLogin}
                 />
                 <div className="containerLogo">
-                    <Link to="/"><p className="Large-Text-Bold">LOGOAQUI</p></Link>
+                    <Link to="/"><p className="Large-Text-Bold">COMPREAQUI</p></Link>
                     <div className="containerCategories">
                         <article>
                             <img src={iconCategories} />

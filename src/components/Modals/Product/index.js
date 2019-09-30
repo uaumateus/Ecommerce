@@ -57,7 +57,7 @@ export default class Product extends Component {
                         <div className="infosProduct">
                             <p className="Large-Text-Bold titleProduct">{product.title}
                             </p>
-                            <p className="Large-Text-Regular">{"R$ "+product.price}</p>
+                            <p className="Large-Text-Light">{"R$ "+product.price}</p>
                             <p className="Medium-Text-Regular">Lorem ipsum augue litora congue dolor, dictumst blandit aptent etiam phasellus, massa scelerisque consequat feugiat. interdum porta malesuada</p>
                             <div>
                                 <ControllAmount 
