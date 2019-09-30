@@ -4,7 +4,6 @@ import api from '../../../services/api';
 import close from '../assets/close.svg';
 
 import InputText from '../../InputText';
-import AlertMessage from '../../AlertMessage';
 
 export default class Register extends Component {
     state = {
@@ -98,7 +97,12 @@ export default class Register extends Component {
                                 login: user, 
                                 password: password
                         }).then(resp => {  
-                            this.openModalLogin();
+                            localStorage.setItem('@compreaqui/user', JSON.stringify({
+                                login: user,
+                                type: '1'})
+                            );
+                            this.closeModal();
+                            window.location.reload();
                         })
                         .catch(error => {          
                             this.setState({otherError: "Ocorreu algum erro"});     

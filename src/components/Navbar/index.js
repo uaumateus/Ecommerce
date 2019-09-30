@@ -26,14 +26,24 @@ class Navbar extends Component{
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: false,
-            userType: 1, // 1 - user comum   /   2 - admin
+            logged: null,
+            userType: null, // 1 - user comum   /   2 - admin
             showSearch: false,
             classSearch: "inputSearch Medium-Text-Regular showSearch",
             searchTerm: null
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
+    }
+
+    componentDidMount(){
+        const user = JSON.parse(localStorage.getItem('@compreaqui/user'));
+        if(user !== null){
+            this.setState({logged: true});
+            this.setState({userType: user.type});
+        }else{
+            this.setState({logged: false});
+        }
     }
 
     handleModalRegister = () => {
@@ -73,6 +83,11 @@ class Navbar extends Component{
 
     handleSearchTerm = e => {
         this.setState({ searchTerm: e.target.value });
+    }
+
+    logout = () => {
+        localStorage.removeItem('@compreaqui/user');
+        window.location.reload();
     }
 
     render(){
@@ -124,7 +139,7 @@ class Navbar extends Component{
                                     <ul className="dropdownUser">
                                         <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                         <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
-                                        <li className="Medium-Text-Regular">Sair</li>
+                                        <li className="Medium-Text-Regular" onClick={this.logout}>Sair</li>
                                     </ul>
                                 </div>
                             }
@@ -142,7 +157,7 @@ class Navbar extends Component{
                                                 <Link to="/relatorio-valor-diario"><li className="Medium-Text-Regular">Valor diário</li></Link>
                                             </ul>
                                         </li>
-                                        <li className="Medium-Text-Regular">Sair</li>
+                                        <li className="Medium-Text-Regular" onClick={this.logout}>Sair</li>
                                     </ul>
                                 </div>
                             }
