@@ -12,10 +12,15 @@
     position: fixed;
 }
 
+.modalProduct .headerModal{
+    border-bottom: 0 solid #FFF;
+}
+
 .contentModalProduct{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 24px;
+    margin-top: -50px;
 }
 
 .contentModalProduct .imgProduct{

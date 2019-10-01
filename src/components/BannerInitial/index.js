@@ -9,9 +9,9 @@ import image3 from './assets/image3.jpg';
 
 const BannerInitial = () => {
     const content = [
-        {image: image1, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
-        {image: image2, title: "Lorem ipsum fo shizzle", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
-        {image: image3, title: "Moda Praia", description: "Nullizzle sapizzle velizzle, crunk volutpizzle, ass quizzle, fo shizzle mah nizzle fo rizzle."},
+        {image: image1, title: "Black Friday antecipada!", description: "Descontos de até 80% OFF em toda a loja!"},
+        {image: image2, title: "Frete Grátis", description: "Em compras acima de R$150,00 você ganha frete gratuito e pode parcelar em ate 10x sem juros!"},
+        {image: image3, title: "Moda Praia", description: "Encontre o melhor em moda praia com até 70% de desconto!"},
     ]
     return(
         <div className="containerBanner">
@@ -24,7 +24,7 @@ const BannerInitial = () => {
                     >
                         <div className="center">
                             <h1 className="Large-Text-Banner">{item.title}</h1>
-                            <p className="Medium-Text-Regular">{item.description}</p>
+                            <p className="Large-Text-Regular">{item.description}</p>
                             <button className="button buttonSecundary">Ver Mais</button>
                         </div>
                     </div>

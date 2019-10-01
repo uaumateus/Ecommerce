@@ -9,14 +9,17 @@ import InputText from '../../InputText';
 export default class Login extends Component {
     state = {
         username: null,
-        password: null
+        password: null,
+        otherError: false
     }
 
     onChange = e => {
-        if(e.target.name === "username")
+        if(e.target.name === "username"){
             this.setState({username: e.target.value});
-        else if(e.target.name === "password")
+        }
+        else if(e.target.name === "password"){
             this.setState({password: e.target.value});
+        }
     }
 
     closeModal = () => {
@@ -29,16 +32,22 @@ export default class Login extends Component {
     };
 
     goLogin = async () => {
-        const { username, password } = this.state;
-        await api.post('/login', {
-            login: username, 
-            password: password
-        }).then(resp => {  
-            console.log(resp)
-        })
-        .catch(error => {          
-            console.log(error)       
-        })
+        if(this.state.username !== "" && this.state.username !== null &&
+            this.state.password !== "" && this.state.password !== null){
+                        
+            const { username, password } = this.state;
+            await api.post('/login', {
+                login: username, 
+                password: password
+            }).then(resp => {  
+                console.log(resp)
+            })
+            .catch(error => {          
+                console.log(error)       
+            })
+        }else{
+            this.setState({otherError: "Preencha todos os campos e tente novamente"});
+        } 
     }
     
     render(){
@@ -54,6 +63,9 @@ export default class Login extends Component {
                         <a onClick={this.closeModal}><img src={close} className="iconClose" /></a>
                     </div>
                     <div className="contentModal">
+                        {this.state.otherError &&
+                            <p className="Medium-Text-Regular errorInput otherError">{this.state.otherError}</p>
+                        }
                         <InputText placeholder="Login" type="text" name="username" onChange={this.onChange}/>
                         <InputText placeholder="Senha" type="password" name="password" onChange={this.onChange}/>
                         <button className="button buttonPrimary" onClick={this.goLogin}>Entrar</button>

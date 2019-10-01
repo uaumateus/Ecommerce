@@ -65,7 +65,7 @@ export default class Product extends Component {
                                     remove={this.removeAmountProduct}
                                     value={this.state.amountProduct}
                                 />
-                                <button className="button buttonPrimary" onClick={this.addBag}>Adicionar ao carrinho</button>
+                                <button className="button buttonPrimary" onClick={this.addBag}>Adicionar à sacola</button>
                             </div>
                         </div>
                     </div>
