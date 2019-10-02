@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import api from '../../services/api';
+
 import BreadCrumb from '../../components/BreadCrumb';
 import CardList from '../../components/CardList';
 
@@ -18,8 +20,24 @@ const products = [
 ]
 
 export default class SimilarPages extends Component {
+  state = {
+    loading: false
+  }
+
+  componentDidMount = async () => {
+    await api.get('/admin/auth').then(resp => {
+        if(resp.data.result){
+            this.props.history.push('/');
+        }
+        else this.setState({loading: true});
+    }).catch(error => {
+        this.props.history.push('/');
+    })
+}
+
   render() {
     const { match, location } = this.props;
+    if (location.pathname == "/favoritos" && !this.state.loading) return null;
     return (
         <div className="content">
           {location.pathname == "/favoritos" &&

@@ -14,7 +14,8 @@ class PurchasesPerCustomer extends Component {
             {tab1: "007", tab2: "Andrew Noronha", tab3: "10"},
             {tab1: "005", tab2: "John Doe da Silva", tab3: "54"},
             {tab1: "005", tab2: "John Doe da Silva", tab3: "2"}
-        ]
+        ],
+        loading: false
     }
 
     componentDidMount = async () => {
@@ -22,12 +23,14 @@ class PurchasesPerCustomer extends Component {
             if(!resp.data.result){
                 this.props.history.push('/');
             }
+            else this.setState({loading: true});
         }).catch(error => {
             this.props.history.push('/');
         })
     }
 
     render(){
+        if (!this.state.loading) return null;
         return(
             <div className="content">
                 <BreadCrumb previousPage="Relatórios" actualPage="Compras por Cliente"/>

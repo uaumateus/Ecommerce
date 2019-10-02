@@ -14,6 +14,7 @@ class Stock extends Component {
         this.state = {
             showCategory: false,
             showProduct: false,
+            loading: false
         };
         this.handleNewCategory = this.handleNewCategory.bind(this);
         this.handleNewProduct = this.handleNewProduct.bind(this);
@@ -24,6 +25,7 @@ class Stock extends Component {
             if(!resp.data.result){
                 this.props.history.push('/');
             }
+            else this.setState({loading: true});            
         }).catch(error => {
             this.props.history.push('/');
         })
@@ -40,6 +42,7 @@ class Stock extends Component {
     };
 
     render(){
+        if (!this.state.loading) return null;
         return(
             <>
                 <div className="modals">

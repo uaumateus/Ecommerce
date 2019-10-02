@@ -14,7 +14,8 @@ class DailyValue extends Component {
             {tab1: "07/09/2019", tab2: "R$ 1.500,00"},
             {tab1: "07/09/2019", tab2: "R$ 1.500,00"},
             {tab1: "07/09/2019", tab2: "R$ 1.500,00"}
-        ]
+        ],
+        loading: false
     }
 
     componentDidMount = async () => {
@@ -22,12 +23,14 @@ class DailyValue extends Component {
             if(!resp.data.result){
                 this.props.history.push('/');
             }
+            else this.setState({loading: true});
         }).catch(error => {
             this.props.history.push('/');
         })
     }
 
     render(){
+        if (!this.state.loading) return null;
         return(
             <div className="content">
                 <BreadCrumb previousPage="Relatórios" actualPage="Valor Diário"/>
