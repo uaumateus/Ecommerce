@@ -97,12 +97,8 @@ export default class Register extends Component {
                                 login: user, 
                                 password: password
                         }).then(resp => {  
-                            localStorage.setItem('@compreaqui/user', JSON.stringify({
-                                login: user,
-                                type: '1'})
-                            );
-                            this.closeModal();
-                            window.location.reload();
+                            this.props.registerSuccess();
+                            this.openModalLogin();
                         })
                         .catch(error => {          
                             this.setState({otherError: "Ocorreu algum erro"});     

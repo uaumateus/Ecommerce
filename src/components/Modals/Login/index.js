@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../Register/style.css';
 import api from '../../../services/api';
+import { login } from '../../../services/auth';
 
 import close from '../assets/close.svg';
 
@@ -40,7 +41,8 @@ export default class Login extends Component {
                 login: username, 
                 password: password
             }).then(resp => {  
-                console.log(resp)
+                console.log(resp);
+                login(resp.data.token);
             })
             .catch(error => {          
                 console.log(error)       

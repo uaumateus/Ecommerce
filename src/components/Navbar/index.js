@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { logout } from '../../services/auth';
 import './style.css';
 
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
+import AlertMessage from '../AlertMessage';
 
 import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
@@ -26,25 +28,26 @@ class Navbar extends Component{
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: null,
+            logged: false,
             userType: null, // 1 - user comum   /   2 - admin
             showSearch: false,
             classSearch: "inputSearch Medium-Text-Regular showSearch",
-            searchTerm: null
+            searchTerm: null,
+            registerSuccess: false
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
     }
 
-    componentDidMount(){
-        const user = JSON.parse(localStorage.getItem('@compreaqui/user'));
-        if(user !== null){
-            this.setState({logged: true});
-            this.setState({userType: user.type});
-        }else{
-            this.setState({logged: false});
-        }
-    }
+    // componentDidMount(){
+    //     const user = JSON.parse(localStorage.getItem('@compreaqui/user'));
+    //     if(user !== null){
+    //         this.setState({logged: true});
+    //         this.setState({userType: user.type});
+    //     }else{
+    //         this.setState({logged: false});
+    //     }
+    // }
 
     handleModalRegister = () => {
         const showRegister = !this.state.showRegister;
@@ -86,13 +89,19 @@ class Navbar extends Component{
     }
 
     logout = () => {
-        localStorage.removeItem('@compreaqui/user');
+        logout();
         window.location.reload();
+    }
+
+    registerSuccess = () => {
+        this.setState({registerSuccess: true});
+        setTimeout(()=>this.setState({registerSuccess: false}), 3000);
     }
 
     render(){
         return(
             <header className="navbar">
+                {this.state.registerSuccess && <AlertMessage message="registerSuccess" />}
                 <Login 
                     show={this.state.showLogin}
                     onChangeState={this.handleModalLogin}
@@ -102,6 +111,7 @@ class Navbar extends Component{
                     show={this.state.showRegister}
                     onChangeState={this.handleModalRegister}
                     handlerLogin={this.handleModalLogin}
+                    registerSuccess={this.registerSuccess}
                 />
                 <div className="containerLogo">
                     <Link to="/"><p className="Large-Text-Bold">COMPREAQUI</p></Link>
