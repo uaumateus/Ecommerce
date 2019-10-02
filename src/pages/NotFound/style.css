@@ -1,0 +1,9 @@
+.NotFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NotFound .Large-Text-Bold{
+    font-size: 25px;
+}
