@@ -82,6 +82,16 @@
     margin: 0;
 }
 
+.Large-Text-Light{
+    font-family: FontLight;
+    font-size: 20px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    margin: 0;
+}
+
 .Large-Text-Bold{
     font-family: FontBold;
     font-size: 18px;

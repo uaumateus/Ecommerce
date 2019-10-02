@@ -16,6 +16,9 @@ const AlertMessage = ({ message }) => {
             {message == "removeFavorite" &&
                 <p className="Large-Text-Regular">Produto removido dos favoritos</p>
             }
+            {message == "registerSuccess" &&
+                <p className="Large-Text-Regular">Cadastro realizado, faça login para continuar!</p>
+            }
         </div>
     );
 }

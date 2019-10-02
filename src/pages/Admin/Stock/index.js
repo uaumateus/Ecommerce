@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './style.css';
+import api from '../../../services/api';
+import { withRouter } from 'react-router-dom';
 
 import BreadCrumb from '../../../components/BreadCrumb';
 import ProductStock from '../../../components/Accordions/ProductStock';
 import NewCategory from '../../../components/Modals/NewCategory';
 import NewProduct from '../../../components/Modals/NewProduct';
 
-export default class Stock extends Component {
+class Stock extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +17,16 @@ export default class Stock extends Component {
         };
         this.handleNewCategory = this.handleNewCategory.bind(this);
         this.handleNewProduct = this.handleNewProduct.bind(this);
+    }
+
+    componentDidMount = async () => {
+        await api.get('/admin/auth').then(resp => {
+            if(!resp.data.result){
+                this.props.history.push('/');
+            }
+        }).catch(error => {
+            this.props.history.push('/');
+        })
     }
 
     handleNewCategory = () => {
@@ -55,3 +67,5 @@ export default class Stock extends Component {
         )
     }
 }
+
+export default withRouter(Stock);

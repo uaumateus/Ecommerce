@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
 import iconTrash from './assets/trash_icon.svg';
+import ControllAmount from '../ControllAmount';
 
 export default class ProductBag extends Component{
-
     state = {
         valueProduct : 1
     }
@@ -34,11 +34,7 @@ export default class ProductBag extends Component{
                     </div>
                 </div>
                 <div className="containerRight">
-                    <div className="valuePrice">
-                        <p className="Large-Text-Bold" onClick={this.removeValueProduct}>-</p>
-                        <p className="Small-Text-Bold">{this.state.valueProduct}</p>
-                        <p className="Large-Text-Bold" onClick={this.addValueProduct}>+</p>
-                    </div>
+                    <ControllAmount add={this.addValueProduct} remove={this.removeValueProduct} value={this.state.valueProduct}/>
                     <div className="containerPrice">
                         <p className="Medium-Text-Regular">Preço:</p>
                         <p className="Medium-Text-Bold">{"R$ "+product.price+",00"}</p>

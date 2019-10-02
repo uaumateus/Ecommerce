@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import api from '../../services/api';
+import { logout } from '../../services/auth';
 import './style.css';
 
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
+import AlertMessage from '../AlertMessage';
 
 import iconCategories from './assets/categories_icon.svg';
 import iconSearch from './assets/search_icon.svg';
@@ -17,6 +20,7 @@ const categories = [
     {description: "Calças"},
     {description: "Saias"},
     {description: "Vestidos"},
+    {description: "Tênis"},
 ]
 
 class Navbar extends Component{
@@ -25,14 +29,29 @@ class Navbar extends Component{
         this.state = {
             showRegister: false,
             showLogin: false,
-            logged: true,
-            userType: 1, // 1 - user comum   /   2 - admin
+            logged: false,
+            userType: null, // 1 - user comum   /   2 - admin
             showSearch: false,
             classSearch: "inputSearch Medium-Text-Regular showSearch",
-            searchTerm: null
+            searchTerm: null,
+            registerSuccess: false
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
+    }
+
+    componentDidMount = async () => {
+        await api.get('/admin/auth').then(resp => {
+            if(resp.data.result){
+                this.setState({logged: true});
+                this.setState({userType: 2});
+            }else{
+                this.setState({logged: true});
+                this.setState({userType: 1});
+            }
+        }).catch(error => {
+            this.setState({logged: false});
+        })
     }
 
     handleModalRegister = () => {
@@ -74,9 +93,20 @@ class Navbar extends Component{
         this.setState({ searchTerm: e.target.value });
     }
 
+    logout = () => {
+        logout();
+        window.location.reload();
+    }
+
+    registerSuccess = () => {
+        this.setState({registerSuccess: true});
+        setTimeout(()=>this.setState({registerSuccess: false}), 3000);
+    }
+
     render(){
         return(
             <header className="navbar">
+                {this.state.registerSuccess && <AlertMessage message="registerSuccess" />}
                 <Login 
                     show={this.state.showLogin}
                     onChangeState={this.handleModalLogin}
@@ -86,9 +116,10 @@ class Navbar extends Component{
                     show={this.state.showRegister}
                     onChangeState={this.handleModalRegister}
                     handlerLogin={this.handleModalLogin}
+                    registerSuccess={this.registerSuccess}
                 />
                 <div className="containerLogo">
-                    <Link to="/"><p className="Large-Text-Bold">LOGOAQUI</p></Link>
+                    <Link to="/"><p className="Large-Text-Bold">COMPREAQUI</p></Link>
                     <div className="containerCategories">
                         <article>
                             <img src={iconCategories} />
@@ -123,7 +154,7 @@ class Navbar extends Component{
                                     <ul className="dropdownUser">
                                         <Link to="/historico"><li className="Medium-Text-Regular liLine">Histórico de compra</li></Link>
                                         <Link to="/conta"><li className="Medium-Text-Regular liLine">Conta</li></Link>
-                                        <li className="Medium-Text-Regular">Sair</li>
+                                        <li className="Medium-Text-Regular" onClick={this.logout}>Sair</li>
                                     </ul>
                                 </div>
                             }
@@ -141,7 +172,7 @@ class Navbar extends Component{
                                                 <Link to="/relatorio-valor-diario"><li className="Medium-Text-Regular">Valor diário</li></Link>
                                             </ul>
                                         </li>
-                                        <li className="Medium-Text-Regular">Sair</li>
+                                        <li className="Medium-Text-Regular" onClick={this.logout}>Sair</li>
                                     </ul>
                                 </div>
                             }
