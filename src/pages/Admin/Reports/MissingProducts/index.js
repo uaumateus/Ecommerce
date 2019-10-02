@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import api from '../../../../services/api';
+import { withRouter } from 'react-router-dom';
 
 import BreadCrumb from '../../../../components/BreadCrumb';
 import TableThreeColumns from '../../../../components/Tables/ThreeColumns';
 
-export default class MissingProducts extends Component {
+class MissingProducts extends Component {
 
     state = {
         products: [
@@ -15,6 +17,16 @@ export default class MissingProducts extends Component {
         ]
     }
 
+    componentDidMount = async () => {
+        await api.get('/admin/auth').then(resp => {
+            if(!resp.data.result){
+                this.props.history.push('/');
+            }
+        }).catch(error => {
+            this.props.history.push('/');
+        })
+    }
+
     render(){
         return(
             <div className="content">
@@ -24,3 +36,5 @@ export default class MissingProducts extends Component {
         )
     }
 }
+
+export default withRouter(MissingProducts);

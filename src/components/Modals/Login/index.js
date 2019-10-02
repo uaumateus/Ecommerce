@@ -37,16 +37,26 @@ export default class Login extends Component {
             this.state.password !== "" && this.state.password !== null){
                         
             const { username, password } = this.state;
-            await api.post('/login', {
+            await api.post('/admin/login', {
                 login: username, 
                 password: password
             }).then(resp => {  
-                console.log(resp);
                 login(resp.data.token);
+                window.location.reload();
             })
             .catch(error => {          
-                console.log(error)       
+                api.post('/login', {
+                    login: username, 
+                    password: password
+                }).then(resp => {  
+                    login(resp.data.token);
+                    window.location.reload();
+                })
+                .catch(error => {          
+                    this.setState({otherError: "Informações incorretas"});      
+                })     
             })
+            
         }else{
             this.setState({otherError: "Preencha todos os campos e tente novamente"});
         } 

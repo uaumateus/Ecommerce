@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import api from '../../services/api';
 import { logout } from '../../services/auth';
 import './style.css';
 
@@ -39,15 +40,19 @@ class Navbar extends Component{
         this.handleModalLogin = this.handleModalLogin.bind(this);
     }
 
-    // componentDidMount(){
-    //     const user = JSON.parse(localStorage.getItem('@compreaqui/user'));
-    //     if(user !== null){
-    //         this.setState({logged: true});
-    //         this.setState({userType: user.type});
-    //     }else{
-    //         this.setState({logged: false});
-    //     }
-    // }
+    componentDidMount = async () => {
+        await api.get('/admin/auth').then(resp => {
+            if(resp.data.result){
+                this.setState({logged: true});
+                this.setState({userType: 2});
+            }else{
+                this.setState({logged: true});
+                this.setState({userType: 1});
+            }
+        }).catch(error => {
+            this.setState({logged: false});
+        })
+    }
 
     handleModalRegister = () => {
         const showRegister = !this.state.showRegister;

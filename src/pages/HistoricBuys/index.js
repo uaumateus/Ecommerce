@@ -1,10 +1,23 @@
 import React, {Component} from 'react';
+import api from '../../services/api';
+import { withRouter } from 'react-router-dom';
 import './style.css';
 
 import BreadCrumb from '../../components/BreadCrumb';
 import Accordion from '../../components/Accordions/Historic';
 
-export default class HistoricBuys extends Component{
+class HistoricBuys extends Component{
+
+    componentDidMount = async () => {
+        await api.get('/admin/auth').then(resp => {
+            if(resp.data.result){
+                this.props.history.push('/');
+            }
+        }).catch(error => {
+            this.props.history.push('/');
+        })
+    }
+
     render(){
         return(
             <div className="content historicBuys">
@@ -17,3 +30,5 @@ export default class HistoricBuys extends Component{
         )
     }
 }
+
+export default withRouter(HistoricBuys);
