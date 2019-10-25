@@ -6,7 +6,7 @@ import close from '../assets/close.svg';
 
 import InputText from '../../InputText';
 
-export default class NewCategory extends Component {
+export default class EditCategory extends Component {
     state = {
         nameCategory: ''
     }
@@ -15,14 +15,13 @@ export default class NewCategory extends Component {
         this.props.onChangeState();
     };
 
-    newCategory = async () => {
+    editCategory = async () => {
         const nameCategory = this.state.nameCategory;
         if(nameCategory !== ''){
-            await api.post('/admin/category', {
+            await api.put('/admin/category/'+this.props.categoryKey, {
                 name: nameCategory
             }).then(resp => {
                 this.setState({nameCategory: ''});
-                this.props.notification();
                 this.closeModal();
             })
             .catch(error => {          
@@ -44,7 +43,7 @@ export default class NewCategory extends Component {
                 <div className="backgroundModal" onClick={this.closeModal}/>
                 <div className="modal" style={{marginTop: '20vh'}}>
                     <div className="headerModal">
-                        <p className="Medium-Text-Bold">Criar categoria</p>
+                        <p className="Medium-Text-Bold">Editar categoria</p>
                         <a onClick={this.closeModal}><img src={close} className="iconClose" /></a>
                     </div>
                     <div className="contentModal">
@@ -53,7 +52,7 @@ export default class NewCategory extends Component {
                         </form>
                     </div>
                     <div className="footerModal">
-                        <button className="button buttonPrimary" onClick={this.newCategory}>Salvar</button>
+                        <button className="button buttonPrimary" onClick={this.editCategory}>Salvar</button>
                     </div>
                 </div>
             </>

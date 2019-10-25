@@ -7,6 +7,7 @@ import BreadCrumb from '../../../components/BreadCrumb';
 import ProductStock from '../../../components/Accordions/ProductStock';
 import NewCategory from '../../../components/Modals/NewCategory';
 import NewProduct from '../../../components/Modals/NewProduct';
+import AlertMessage from '../../../components/AlertMessage';
 
 class Stock extends Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class Stock extends Component {
             showCategory: false,
             showProduct: false,
             loading: false,
-            categories: []
+            categories: [],
+            categoryAdd: false
         };
         this.handleNewCategory = this.handleNewCategory.bind(this);
         this.handleNewProduct = this.handleNewProduct.bind(this);
@@ -57,6 +59,21 @@ class Stock extends Component {
         this.setState({ showProduct });
     };
 
+    categoryAdd = () => {
+        this.setState({categoryAdd: true});
+        setTimeout(()=>this.setState({categoryAdd: false}), 3000);
+    }
+
+    compare( a, b ) {
+        if ( a.name.toUpperCase() < b.name.toUpperCase() ){
+          return -1;
+        }
+        if ( a.name > b.name ){
+          return 1;
+        }
+        return 0;
+    }
+
     render(){
         const { categories } = this.state;
         if (!this.state.loading) return null;
@@ -67,6 +84,7 @@ class Stock extends Component {
                         show={this.state.showCategory}
                         onChangeState={this.handleNewCategory}
                         handlerRegister={this.handleNewCategory}
+                        notification={this.categoryAdd}
                     />
                     <NewProduct 
                         show={this.state.showProduct}
@@ -75,13 +93,14 @@ class Stock extends Component {
                     />
                 </div>
                 <div className="content stock">
+                    {this.state.categoryAdd && <AlertMessage message="categoryAdd" />}
                     <div className="optionsStock">
                         <BreadCrumb actualPage="Estoque"/>
                         <button className="button buttonSecundary" onClick={this.handleNewCategory}>+ Categoria</button>
                         <button className="button buttonPrimary" onClick={this.handleNewProduct}>+ Produto</button>
                     </div>
                     
-                    {categories.map(item => (
+                    {categories.sort(this.compare).map(item => (
                         <ProductStock category={item.name} categoryKey={item.id} />
                     ))}
                 </div>

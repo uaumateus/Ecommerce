@@ -14,15 +14,6 @@ import iconFavorite from './assets/favorite_icon.svg';
 import iconBag from './assets/bag_icon.svg';
 import iconPerson from './assets/person_icon.svg';
 
-const categories = [
-    {description: "Blusas"},
-    {description: "Camisas"},
-    {description: "Calças"},
-    {description: "Saias"},
-    {description: "Vestidos"},
-    {description: "Tênis"},
-]
-
 class Navbar extends Component{
     constructor(props) {
         super(props);
@@ -34,7 +25,15 @@ class Navbar extends Component{
             showSearch: false,
             classSearch: "inputSearch Medium-Text-Regular showSearch",
             searchTerm: null,
-            registerSuccess: false
+            registerSuccess: false,
+            categories : [
+                {description: "Blusas"},
+                {description: "Camisas"},
+                {description: "Calças"},
+                {description: "Saias"},
+                {description: "Vestidos"},
+                {description: "Tênis"},
+            ]
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -127,7 +126,7 @@ class Navbar extends Component{
                         </article>
                         <ul className="dropdownCategories">
                             <div>
-                                {categories.map((item, key) => (
+                                {this.state.categories.map((item, key) => (
                                     <Link to={`/categorias/${item.description}`}><li className="Large-Text-Regular">{item.description}</li></Link>
                                 ))}
                             </div>

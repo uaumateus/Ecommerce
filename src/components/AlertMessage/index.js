@@ -19,6 +19,9 @@ const AlertMessage = ({ message }) => {
             {message == "registerSuccess" &&
                 <p className="Large-Text-Regular">Cadastro realizado, faça login para continuar!</p>
             }
+            {message == "categoryAdd" &&
+                <p className="Large-Text-Regular">Categoria criada!</p>
+            }
         </div>
     );
 }
