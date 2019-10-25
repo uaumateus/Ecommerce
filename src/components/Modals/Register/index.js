@@ -97,8 +97,9 @@ export default class Register extends Component {
                                 login: user, 
                                 password: password
                         }).then(resp => {  
-                            this.props.registerSuccess();
-                            this.openModalLogin();
+                            console.log(resp)
+                            // this.props.registerSuccess();
+                            // this.openModalLogin();
                         })
                         .catch(error => {          
                             this.setState({otherError: "Ocorreu algum erro"});     

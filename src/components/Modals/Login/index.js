@@ -41,8 +41,22 @@ export default class Login extends Component {
                 login: username, 
                 password: password
             }).then(resp => {  
-                login(resp.data.token);
-                window.location.reload();
+                if(resp.data.result === "Administrador não encontrado"){
+                    api.post('/login', {
+                        login: username, 
+                        password: password
+                    }).then(r => {  
+                        login(r.data.token);
+                        window.location.reload();
+                    })
+                    .catch(error => {          
+                        this.setState({otherError: "Informações incorretas"});      
+                    })   
+                }
+                else{
+                    login(resp.data.token);
+                    window.location.reload();
+                }
             })
             .catch(error => {          
                 api.post('/login', {

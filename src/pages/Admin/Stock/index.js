@@ -14,7 +14,8 @@ class Stock extends Component {
         this.state = {
             showCategory: false,
             showProduct: false,
-            loading: false
+            loading: false,
+            categories: []
         };
         this.handleNewCategory = this.handleNewCategory.bind(this);
         this.handleNewProduct = this.handleNewProduct.bind(this);
@@ -25,10 +26,25 @@ class Stock extends Component {
             if(!resp.data.result){
                 this.props.history.push('/');
             }
-            else this.setState({loading: true});            
+            else{
+                this.setState({loading: true});
+                this.getCategories();
+            }            
         }).catch(error => {
             this.props.history.push('/');
         })
+    }
+
+    componentDidUpdate = () => {
+        this.getCategories();
+    }
+
+    getCategories = async () => {
+        await api.get('admin/category').then(resp => {
+            this.setState({categories: resp.data});
+        }).catch(error => {
+            console.log(error)
+        });
     }
 
     handleNewCategory = () => {
@@ -42,6 +58,7 @@ class Stock extends Component {
     };
 
     render(){
+        const { categories } = this.state;
         if (!this.state.loading) return null;
         return(
             <>
@@ -63,8 +80,10 @@ class Stock extends Component {
                         <button className="button buttonSecundary" onClick={this.handleNewCategory}>+ Categoria</button>
                         <button className="button buttonPrimary" onClick={this.handleNewProduct}>+ Produto</button>
                     </div>
-                    <ProductStock category="Camisas"/>
-                    <ProductStock category="Bermudas"/>
+                    
+                    {categories.map(item => (
+                        <ProductStock category={item.name} categoryKey={item.id} />
+                    ))}
                 </div>
             </>
         )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../../../services/api';
 import '../style.css';
 
 import imgMockup from '../../../assets/mockup.png';
@@ -14,6 +15,14 @@ export default class ProductStock extends Component{
         this.setState({accordion: !this.state.accordion});
     }
 
+    removeCategory = async () => {
+        await api.delete('/admin/category/'+this.props.categoryKey).then(resp => {
+            console.log(resp)
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+
     render(){
         return(
             <div className="accordion accordionCostumers accordionStock">
@@ -21,7 +30,7 @@ export default class ProductStock extends Component{
                     <p className="Medium-Text-Bold">{this.props.category}</p>
                     <p className="Medium-Text-Regular">[ 8 produtos ]</p>
                     <p className="buttonProduct Medium-Text-Regular options">editar</p>
-                    <p className="buttonProduct Medium-Text-Regular options">remover</p>
+                    <p className="buttonProduct Medium-Text-Regular options" onClick={this.removeCategory}>remover</p>
                 </div>
                 {this.state.accordion &&
                 <>
