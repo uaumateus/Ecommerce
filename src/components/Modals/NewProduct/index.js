@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import '../Register/style.css';
 import close from '../assets/close.svg';
 import api from '../../../services/api';
+import {withRouter} from 'react-router-dom';
 
 import InputText from '../../InputText';
 
-export default class NewProduct extends Component {
+class NewProduct extends Component {
     state = {
         categorys: [],
         valueCategory: "",
@@ -18,7 +19,7 @@ export default class NewProduct extends Component {
     }
 
     componentDidMount = async () => {
-        await api.get('admin/category').then(resp => {
+        await api.get('/category').then(resp => {
             let aux = [];
             for(let i = 0; i < resp.data.length; i++)
                 aux.push(resp.data[i].name);
@@ -59,11 +60,21 @@ export default class NewProduct extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    saveNewProduct = () => {
+    saveNewProduct = async (e) => {
+        e.preventDefault();
         const { image, name, amount, price, selectedCategorys } = this.state;
-        if(image !== null && name !== '' && amount !== '' && price !== '' && selectedCategorys !== '')
-            console.log(this.state);
-        else
+        if(image !== null && name !== '' && amount !== '' && price !== '' && selectedCategorys !== ''){
+            const data = new FormData;
+            data.append('name', name);
+            data.append('description', "descricao");
+            data.append('amount', amount);
+            data.append('price', price);
+            data.append('file', image);
+            await api.post('/admin/product', data).then(resp => { 
+                this.props.notification();
+                this.closeModal();
+            });
+        }else
             this.setState({error: "Preencha todos os campos"});
     }
     
@@ -83,7 +94,7 @@ export default class NewProduct extends Component {
                         {this.state.error &&
                             <p className="Medium-Text-Regular errorInput otherError">{this.state.error}</p>
                         }
-                        <form>
+                        <form id="newProduct" onSubmit={this.saveNewProduct}>
                             <label for="uploadImage" className="inputFile">Carregar imagem</label>
                             <input id="uploadImage" type="file" className="inputFileHidden" onChange={this.handleImage}/>
                             <div className="containerCategorys">
@@ -109,13 +120,13 @@ export default class NewProduct extends Component {
                             <InputText placeholder="Nome do produto" name="name" onChange={this.onChangeText} type="text"/>
                             <InputText placeholder="Quantidade em estoque" name="amount" onChange={this.onChangeText} type="text"/>
                             <InputText placeholder="Preço" name="price" onChange={this.onChangeText} type="text"/>
+                            <button type="submit" className="button buttonPrimary">Salvar</button>
                         </form>
-                    </div>
-                    <div className="footerModal">
-                        <button className="button buttonPrimary" onClick={this.saveNewProduct}>Salvar</button>
                     </div>
                 </div>
             </>
         )
     }
 }
+
+export default withRouter(NewProduct);

@@ -22,6 +22,9 @@ const AlertMessage = ({ message }) => {
             {message == "categoryAdd" &&
                 <p className="Large-Text-Regular">Categoria criada!</p>
             }
+            {message == "productAdd" &&
+                <p className="Large-Text-Regular">Produto criado!</p>
+            }
         </div>
     );
 }

@@ -26,14 +26,7 @@ class Navbar extends Component{
             classSearch: "inputSearch Medium-Text-Regular showSearch",
             searchTerm: null,
             registerSuccess: false,
-            categories : [
-                {description: "Blusas"},
-                {description: "Camisas"},
-                {description: "Calças"},
-                {description: "Saias"},
-                {description: "Vestidos"},
-                {description: "Tênis"},
-            ]
+            categories : []
         };
         this.handleModalRegister = this.handleModalRegister.bind(this);
         this.handleModalLogin = this.handleModalLogin.bind(this);
@@ -51,6 +44,19 @@ class Navbar extends Component{
         }).catch(error => {
             this.setState({logged: false});
         })
+        this.getCategories();
+    }
+
+    getCategories = async () => {
+        await api.get('/category').then(resp => {
+            this.setState({categories: resp.data});
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+
+    componentDidUpdate = () => {
+        this.getCategories();
     }
 
     handleModalRegister = () => {
@@ -127,7 +133,7 @@ class Navbar extends Component{
                         <ul className="dropdownCategories">
                             <div>
                                 {this.state.categories.map((item, key) => (
-                                    <Link to={`/categorias/${item.description}`}><li className="Large-Text-Regular">{item.description}</li></Link>
+                                    <Link to={`/categorias/${item.name}`}><li className="Large-Text-Regular">{item.name}</li></Link>
                                 ))}
                             </div>
                         </ul>

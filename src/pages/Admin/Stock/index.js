@@ -17,7 +17,8 @@ class Stock extends Component {
             showProduct: false,
             loading: false,
             categories: [],
-            categoryAdd: false
+            categoryAdd: false,
+            productAdd: false
         };
         this.handleNewCategory = this.handleNewCategory.bind(this);
         this.handleNewProduct = this.handleNewProduct.bind(this);
@@ -42,7 +43,7 @@ class Stock extends Component {
     }
 
     getCategories = async () => {
-        await api.get('admin/category').then(resp => {
+        await api.get('/category').then(resp => {
             this.setState({categories: resp.data});
         }).catch(error => {
             console.log(error)
@@ -62,6 +63,11 @@ class Stock extends Component {
     categoryAdd = () => {
         this.setState({categoryAdd: true});
         setTimeout(()=>this.setState({categoryAdd: false}), 3000);
+    }
+
+    productAdd = () => {
+        this.setState({productAdd: true});
+        setTimeout(()=>this.setState({productAdd: false}), 3000);
     }
 
     compare( a, b ) {
@@ -90,10 +96,12 @@ class Stock extends Component {
                         show={this.state.showProduct}
                         onChangeState={this.handleNewProduct}
                         handlerRegister={this.handleNewProduct}
+                        notification={this.productAdd}
                     />
                 </div>
                 <div className="content stock">
                     {this.state.categoryAdd && <AlertMessage message="categoryAdd" />}
+                    {this.state.productAdd && <AlertMessage message="productAdd" />}
                     <div className="optionsStock">
                         <BreadCrumb actualPage="Estoque"/>
                         <button className="button buttonSecundary" onClick={this.handleNewCategory}>+ Categoria</button>
