@@ -1,14 +1,31 @@
 import React, {Component} from 'react';
 import '../Register/style.css';
 import close from '../assets/close.svg';
+import api from '../../../services/api';
 
 import InputText from '../../InputText';
 
 export default class NewProduct extends Component {
     state = {
-        categorys: ["Camisetas", "Camisas", "Bermudas", "Calças"],
+        categorys: [],
         valueCategory: "",
-        selectedCategorys: []
+        selectedCategorys: [],
+        image: null,
+        name: '',
+        amount: '',
+        price: '',
+        error: false
+    }
+
+    componentDidMount = async () => {
+        await api.get('admin/category').then(resp => {
+            let aux = [];
+            for(let i = 0; i < resp.data.length; i++)
+                aux.push(resp.data[i].name);
+            this.setState({categorys: aux});
+        }).catch(error => {
+            console.log(error)
+        });
     }
 
     closeModal = () => {
@@ -33,6 +50,22 @@ export default class NewProduct extends Component {
             this.setState({valueCategory: ""});
         }
     }
+
+    handleImage = e => {
+        this.setState({ image: e.target.files[0] });
+    }
+
+    onChangeText = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    saveNewProduct = () => {
+        const { image, name, amount, price, selectedCategorys } = this.state;
+        if(image !== null && name !== '' && amount !== '' && price !== '' && selectedCategorys !== '')
+            console.log(this.state);
+        else
+            this.setState({error: "Preencha todos os campos"});
+    }
     
     render(){
         if (!this.props.show) {
@@ -47,9 +80,12 @@ export default class NewProduct extends Component {
                         <a onClick={this.closeModal}><img src={close} className="iconClose" /></a>
                     </div>
                     <div className="contentModal">
+                        {this.state.error &&
+                            <p className="Medium-Text-Regular errorInput otherError">{this.state.error}</p>
+                        }
                         <form>
                             <label for="uploadImage" className="inputFile">Carregar imagem</label>
-                            <input id="uploadImage" type="file" className="inputFileHidden"/>
+                            <input id="uploadImage" type="file" className="inputFileHidden" onChange={this.handleImage}/>
                             <div className="containerCategorys">
                                 <input 
                                     list="categorys" 
@@ -70,13 +106,13 @@ export default class NewProduct extends Component {
                                     <option value={item} />
                                 ))}
                             </datalist>
-                            <InputText placeholder="Nome do produto" type="text"/>
-                            <InputText placeholder="Quantidade em estoque" type="text"/>
-                            <InputText placeholder="Preço" type="text"/>
+                            <InputText placeholder="Nome do produto" name="name" onChange={this.onChangeText} type="text"/>
+                            <InputText placeholder="Quantidade em estoque" name="amount" onChange={this.onChangeText} type="text"/>
+                            <InputText placeholder="Preço" name="price" onChange={this.onChangeText} type="text"/>
                         </form>
                     </div>
                     <div className="footerModal">
-                        <button className="button buttonPrimary">Salvar</button>
+                        <button className="button buttonPrimary" onClick={this.saveNewProduct}>Salvar</button>
                     </div>
                 </div>
             </>
