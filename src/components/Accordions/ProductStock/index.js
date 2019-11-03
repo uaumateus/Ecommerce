@@ -30,20 +30,26 @@ export default class ProductStock extends Component{
     };
 
     render(){
+        const { category, categoryKey, products } = this.props;
         return(
             <>
                 <div className="modals">
                     <EditCategory 
                         show={this.state.showEditCategory}
                         onChangeState={this.handleEditCategory}
-                        categoryKey={this.props.categoryKey}
+                        categoryKey={categoryKey}
                     />
                 </div>
                 <div className="accordion accordionCostumers accordionStock">
                     <div className="header">
                         <div onClick={this.handleAccordion}>
-                            <p className="Medium-Text-Bold">{this.props.category}</p>
-                            <p className="Medium-Text-Regular">[ 8 produtos ]</p>
+                            <p className="Medium-Text-Bold">{category}</p>
+                            {products.length === 1 ?
+                                <p className="Medium-Text-Regular">[ {products.length} produto ]</p>
+                                :
+                                <p className="Medium-Text-Regular">[ {products.length} produtos ]</p>
+                            }
+                            
                         </div>
                         <div className="headerRight">
                             <p className="buttonProduct Medium-Text-Regular options" onClick={this.handleEditCategory}>editar</p>
@@ -52,49 +58,34 @@ export default class ProductStock extends Component{
                     </div>
                     {this.state.accordion &&
                     <>
-                        <div className="container">
-                            <div className="containerProduct">
-                                <img src={imgMockup} />
-                                <div>
-                                    <div className="containerTitleProduct">
-                                        <p className="Large-Text-Bold titleProduct">Camisa Mockup</p>
-                                        <p className="buttonProduct Medium-Text-Regular">editar</p>
-                                        <p className="buttonProduct Medium-Text-Regular">remover</p>
+                        {products.map((item) => (
+                            <div className="container">
+                                <div className="containerProduct">
+                                    <img src={`data:image/jpg;base64,${item.photo}`} />
+                                    <div>
+                                        <div className="containerTitleProduct">
+                                            <p className="Large-Text-Bold titleProduct">{item.name}</p>
+                                            <p className="buttonProduct Medium-Text-Regular">editar</p>
+                                            <p className="buttonProduct Medium-Text-Regular">remover</p>
+                                        </div>
+                                        {item.amount > 0 ?
+                                            <p className="Small-Text-Regular">Em estoque</p>
+                                            :
+                                            <p className="Small-Text-Regular">Sem estoque</p>
+                                        }
+                                        
                                     </div>
-                                    <p className="Small-Text-Regular">Em estoque</p>
                                 </div>
+                                <article>
+                                    <p className="Medium-Text-Regular">Restantes:</p>
+                                    <p className="Medium-Text-Bold">{item.amount}</p>
+                                </article>
+                                <article>
+                                    <p className="Medium-Text-Regular">Preço:</p>
+                                    <p className="Medium-Text-Bold">{item.price}</p>
+                                </article>
                             </div>
-                            <article>
-                                <p className="Medium-Text-Regular">Restantes:</p>
-                                <p className="Medium-Text-Bold">4</p>
-                            </article>
-                            <article>
-                                <p className="Medium-Text-Regular">Preço:</p>
-                                <p className="Medium-Text-Bold">R$ 150,00</p>
-                            </article>
-                        </div>
-
-                        <div className="container">
-                            <div className="containerProduct">
-                                <img src={imgMockup} />
-                                <div>
-                                    <div className="containerTitleProduct">
-                                        <p className="Large-Text-Bold titleProduct">Camisa Mockup</p>
-                                        <p className="buttonProduct Medium-Text-Regular">editar</p>
-                                        <p className="buttonProduct Medium-Text-Regular">remover</p>
-                                    </div>
-                                    <p className="Small-Text-Regular">Em estoque</p>
-                                </div>
-                            </div>
-                            <article>
-                                <p className="Medium-Text-Regular">Restantes:</p>
-                                <p className="Medium-Text-Bold">4</p>
-                            </article>
-                            <article>
-                                <p className="Medium-Text-Regular">Preço:</p>
-                                <p className="Medium-Text-Bold">R$ 150,00</p>
-                            </article>
-                        </div>
+                        ))}
                     </>
                     }
                 </div>

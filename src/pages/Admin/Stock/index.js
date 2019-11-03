@@ -38,14 +38,13 @@ class Stock extends Component {
         })
     }
 
-    componentDidUpdate = () => {
-        this.getCategories();
-    }
+    // componentWillUpdate = () => {
+    //     this.getCategories();
+    // }
 
     getCategories = async () => {
         await api.get('/admin/categories-products').then(resp => {
-            console.log(resp.data)
-            // this.setState({categories: resp.data});
+            this.setState({categories: resp.data});
         }).catch(error => {
             console.log(error)
         });
@@ -110,7 +109,7 @@ class Stock extends Component {
                     </div>
                     
                     {categories.sort(this.compare).map(item => (
-                        <ProductStock category={item.name} categoryKey={item.id} />
+                        <ProductStock category={item.name} categoryKey={item.id} products={item.products}/>
                     ))}
                 </div>
             </>
