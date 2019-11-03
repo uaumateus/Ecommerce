@@ -38,9 +38,9 @@ class Stock extends Component {
         })
     }
 
-    // componentWillUpdate = () => {
-    //     this.getCategories();
-    // }
+    componentWillUpdate = () => {
+        this.getCategories();
+    }
 
     getCategories = async () => {
         await api.get('/admin/categories-products').then(resp => {

@@ -3,10 +3,10 @@ import './style.css';
 
 export default class InputText extends Component { 
     render(){
-        const { placeholder, type, onChange, name } = this.props;
+        const { placeholder, type, onChange, name, value } = this.props;
         return(
             <div className="contentInputText">
-                <input type={type} placeholder={placeholder} name={name} className="inputText Medium-Text-Regular" onChange={onChange}/>
+                <input value={value} type={type} placeholder={placeholder} name={name} className="inputText Medium-Text-Regular" onChange={onChange}/>
             </div>
         )
     }

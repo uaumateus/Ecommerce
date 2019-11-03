@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import api from '../../../services/api';
+import { withRouter } from 'react-router-dom';
 import '../style.css';
 import EditCategory from '../../Modals/EditCategory';
 import imgMockup from '../../../assets/mockup.png';
 import iconClose from '../assets/close_icon.svg';
 
-export default class ProductStock extends Component{
+class ProductStock extends Component{
 
     state = {
         accordion: false,
@@ -29,6 +30,14 @@ export default class ProductStock extends Component{
         this.setState({ showEditCategory });
     };
 
+    deleteProduct = async (e) => {
+        await api.delete('/admin/product/'+e).then(resp => {
+            console.log(resp);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     render(){
         const { category, categoryKey, products } = this.props;
         return(
@@ -38,6 +47,7 @@ export default class ProductStock extends Component{
                         show={this.state.showEditCategory}
                         onChangeState={this.handleEditCategory}
                         categoryKey={categoryKey}
+                        categoryName={category}
                     />
                 </div>
                 <div className="accordion accordionCostumers accordionStock">
@@ -66,7 +76,7 @@ export default class ProductStock extends Component{
                                         <div className="containerTitleProduct">
                                             <p className="Large-Text-Bold titleProduct">{item.name}</p>
                                             <p className="buttonProduct Medium-Text-Regular">editar</p>
-                                            <p className="buttonProduct Medium-Text-Regular">remover</p>
+                                            <p className="buttonProduct Medium-Text-Regular" onClick={() => this.deleteProduct(item.id)}>remover</p>
                                         </div>
                                         {item.amount > 0 ?
                                             <p className="Small-Text-Regular">Em estoque</p>
@@ -93,3 +103,5 @@ export default class ProductStock extends Component{
         );
     }
 }
+
+export default withRouter(ProductStock);

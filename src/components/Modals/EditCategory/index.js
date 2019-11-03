@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import '../Register/style.css';
 import api from '../../../services/api';
+import { withRouter } from 'react-router-dom';
 
 import close from '../assets/close.svg';
 
 import InputText from '../../InputText';
 
-export default class EditCategory extends Component {
+class EditCategory extends Component {
     state = {
         nameCategory: ''
+    }
+
+    componentDidMount() {
+        this.setState({ nameCategory: this.props.categoryName });
     }
 
     closeModal = () => {
@@ -48,7 +53,7 @@ export default class EditCategory extends Component {
                     </div>
                     <div className="contentModal">
                         <form>
-                            <InputText placeholder="Nome da categoria" type="text" onChange={this.onChange}/>
+                            <InputText value={this.state.nameCategory} placeholder="Nome da categoria" type="text" onChange={this.onChange}/>
                         </form>
                     </div>
                     <div className="footerModal">
@@ -59,3 +64,5 @@ export default class EditCategory extends Component {
         )
     }
 }
+
+export default withRouter(EditCategory);

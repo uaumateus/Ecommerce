@@ -132,6 +132,7 @@
 
 .accordionStock .containerTitleProduct .buttonProduct{
     color: var(--select);
+    cursor: pointer;
 }
 
 .accordionStock .container{
