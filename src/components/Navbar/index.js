@@ -133,7 +133,7 @@ class Navbar extends Component{
                         <ul className="dropdownCategories">
                             <div>
                                 {this.state.categories.map((item, key) => (
-                                    <Link to={`/categorias/${item.name}`}><li className="Large-Text-Regular">{item.name}</li></Link>
+                                    <Link to={{ pathname: `/categorias/${item.name}`, state: { categorie: item }}}><li className="Large-Text-Regular">{item.name}</li></Link>
                                 ))}
                             </div>
                         </ul>

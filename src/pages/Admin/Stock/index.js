@@ -43,8 +43,9 @@ class Stock extends Component {
     }
 
     getCategories = async () => {
-        await api.get('/categories').then(resp => {
-            this.setState({categories: resp.data});
+        await api.get('/admin/categories-products').then(resp => {
+            console.log(resp.data)
+            // this.setState({categories: resp.data});
         }).catch(error => {
             console.log(error)
         });

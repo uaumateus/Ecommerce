@@ -51,10 +51,10 @@ export default class CardProduct extends Component{
                                 <img src={iconBag} onClick={this.addBag}/>
                             </div>
                         </article>
-                        <img src={product.image} />
+                        <img src={`data:image/jpg;base64,${product.photo}`} />
                     </article>
 
-                    <p className="Large-Text-Bold">{product.title}</p>
+                    <p className="Large-Text-Bold">{product.name}</p>
                     <p className="Medium-Text-Light">{"R$ " + product.price}</p>
 
                     {this.state.addBag &&

@@ -6,7 +6,7 @@ import CardList from '../../components/CardList';
 
 import imageMockup from '../../assets/mockup.png';
 
-const products = [
+const productsTest = [
     {title: "Camisa Mockup", price: "120", image: imageMockup},
     {title: "Camisa Mockup", price: "120", image: imageMockup},
     {title: "Camisa Mockup", price: "120", image: imageMockup},
@@ -21,19 +21,40 @@ const products = [
 
 export default class SimilarPages extends Component {
   state = {
-    loading: false
+    loading: true,
+    products: []
   }
 
-  componentDidMount = async () => {
-    await api.get('/admin/auth').then(resp => {
-        if(resp.data.result){
-            this.props.history.push('/');
-        }
-        else this.setState({loading: true});
+  componentDidMount = () => {
+    if(this.props.match.params.description){
+      this.getProductsCategorie(this.props.location.state.categorie.id);
+    }
+  }
+
+  componentDidUpdate(){
+    if(this.props.match.params.description){
+      this.getProductsCategorie(this.props.location.state.categorie.id);
+    }
+  }
+
+  getProductsCategorie = async (e) => {
+    await api.get('/category-products/'+e).then(resp => {
+        this.setState({ products: resp.data }) 
     }).catch(error => {
-        this.props.history.push('/');
+        console.log("Erro ao buscar produtos")
     })
-}
+  }
+
+  // componentDidMount = async () => {
+  //   await api.get('/admin/auth').then(resp => {
+  //       if(resp.data.result){
+  //           this.props.history.push('/');
+  //       }
+  //       else this.setState({loading: true});
+  //   }).catch(error => {
+  //       this.props.history.push('/');
+  //   })
+  // }
 
   render() {
     const { match, location } = this.props;
@@ -50,7 +71,11 @@ export default class SimilarPages extends Component {
             <BreadCrumb actualPage={"Busca por: ''" + match.params.term + "''"} />
           }
 
-          <CardList products={products} />
+          {match.params.description ?
+            <CardList products={this.state.products} />
+            :
+            <CardList products={productsTest} />
+          }
             
         </div>
     );

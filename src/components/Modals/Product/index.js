@@ -52,13 +52,13 @@ export default class Product extends Component {
                     </div>
                     <div className="contentModal contentModalProduct">
                         <div className="imgProduct">
-                            <img src={product.image} />
+                            <img src={`data:image/jpg;base64,${product.photo}`} />
                         </div>
                         <div className="infosProduct">
-                            <p className="Large-Text-Bold titleProduct">{product.title}
+                            <p className="Large-Text-Bold titleProduct">{product.name}
                             </p>
                             <p className="Large-Text-Light">{"R$ "+product.price}</p>
-                            <p className="Medium-Text-Regular">Lorem ipsum augue litora congue dolor, dictumst blandit aptent etiam phasellus, massa scelerisque consequat feugiat. interdum porta malesuada</p>
+                            <p className="Medium-Text-Regular">{product.description}</p>
                             <div>
                                 <ControllAmount 
                                     add={this.addAmountProduct}
