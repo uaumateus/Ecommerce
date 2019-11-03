@@ -21,6 +21,10 @@
     grid-template-rows: 60px auto 60px;
 }
 
+.modalNewProduct{
+    grid-template-rows: 60px auto;
+}
+
 .headerModal{
     border-bottom: 1px solid var(--disable);
     display: grid;

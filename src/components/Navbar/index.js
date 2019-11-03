@@ -48,7 +48,7 @@ class Navbar extends Component{
     }
 
     getCategories = async () => {
-        await api.get('/category').then(resp => {
+        await api.get('/categories').then(resp => {
             this.setState({categories: resp.data});
         }).catch(error => {
             console.log(error)
