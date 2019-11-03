@@ -13,13 +13,27 @@ class NewProduct extends Component {
         selectedCategorys: [],
         image: null,
         name: '',
+        description: '',
         amount: '',
         price: '',
-        error: false
+        error: false,
+        test: false,
+        product: null
     }
 
     componentDidMount = () => {
         this.getCategories();
+    }
+
+    componentDidUpdate(){
+            if(this.props.product)
+                if(!this.state.test)
+                    this.setState({test: true,
+                                    name: this.props.product.name,
+                                    description: this.props.product.description,
+                                    amount: this.props.product.amount,
+                                    price: this.props.product.price,
+                                    image: `data:image/jpg;base64,${this.props.product.photo}`})     
     }
 
     getCategories = async () => {
@@ -69,27 +83,44 @@ class NewProduct extends Component {
 
     saveNewProduct = async (e) => {
         e.preventDefault();
-        const { image, name, amount, price, selectedCategorys } = this.state;
-        if(image !== null && name !== '' && amount !== '' && price !== '' && selectedCategorys !== []){
-            const data = new FormData;
-            let categories = [];
-            for(var i = 0; i < selectedCategorys.length; i++)
-                categories.push(selectedCategorys[i].id);
-            data.append('name', name);
-            data.append('description', "descricao");
-            data.append('amount', amount);
-            data.append('price', price);
-            data.append('file', image);
-            data.append('categories', JSON.stringify(categories));
-            await api.post('/admin/product', data).then(resp => { 
-                this.props.notification();
-                this.closeModal();
-            });
-        }else
-            this.setState({error: "Preencha todos os campos"});
+        const { image, name, description, amount, price, selectedCategorys } = this.state;
+        if(this.props.type === "insert"){
+            if(image !== null && name !== '' && amount !== '' && price !== '' && selectedCategorys !== []){
+                const data = new FormData;
+                let categories = [];
+                for(var i = 0; i < selectedCategorys.length; i++)
+                    categories.push(selectedCategorys[i].id);
+                data.append('name', name);
+                data.append('description', description);
+                data.append('amount', amount);
+                data.append('price', price);
+                data.append('file', image);
+                data.append('categories', JSON.stringify(categories));
+                await api.post('/admin/product', data).then(resp => { 
+                    this.props.notification();
+                    this.closeModal();
+                });
+            }else
+                this.setState({error: "Preencha todos os campos"});
+        }else if(this.props.type === "edit"){
+            if(image !== null && name !== '' && amount !== '' && price !== ''){
+                const data = new FormData;
+                data.append('name', name);
+                data.append('description', description);
+                data.append('amount', amount);
+                data.append('price', price);
+                data.append('file', image);
+                await api.put('/admin/product/'+this.props.product.id, data).then(resp => { 
+                    this.closeModal();
+                });
+            }else
+                this.setState({error: "Preencha todos os campos"});
+        }
+        
     }
     
     render(){
+        const { name, description, amount, price } = this.state;
         if (!this.props.show) {
             return null;
         }
@@ -108,29 +139,34 @@ class NewProduct extends Component {
                         <form id="newProduct" onSubmit={this.saveNewProduct}>
                             <label for="uploadImage" className="inputFile">Carregar imagem</label>
                             <input id="uploadImage" type="file" className="inputFileHidden" onChange={this.handleImage}/>
-                            <div className="containerCategorys">
-                                <input 
-                                    list="categorys" 
-                                    placeholder="Categoria" 
-                                    onChange={this.changeCategoryInput} 
-                                    value={this.state.valueCategory} 
-                                    className="inputDataList Medium-Text-Regular"
-                                />
-                                <span className="button buttonSecundary" onClick={this.addCategoryList}>Adicionar</span>
-                            </div>
-                            <div className="selectedCategorys">
-                                {this.state.selectedCategorys.map((item) => (
-                                    <p className="Small-Text-Regular">{item.name}</p>
-                                ))}
-                            </div>
-                            <datalist id="categorys">
-                                {this.state.categorys.map((item) => (
-                                    <option value={item.name} />
-                                ))}
-                            </datalist>
-                            <InputText placeholder="Nome do produto" name="name" onChange={this.onChangeText} type="text"/>
-                            <InputText placeholder="Quantidade em estoque" name="amount" onChange={this.onChangeText} type="text"/>
-                            <InputText placeholder="Preço" name="price" onChange={this.onChangeText} type="text"/>
+                            {this.props.type === "insert" && 
+                                <>    
+                                    <div className="containerCategorys">
+                                        <input 
+                                            list="categorys" 
+                                            placeholder="Categoria" 
+                                            onChange={this.changeCategoryInput} 
+                                            value={this.state.valueCategory} 
+                                            className="inputDataList Medium-Text-Regular"
+                                        />
+                                        <span className="button buttonSecundary" onClick={this.addCategoryList}>Adicionar</span>
+                                    </div>
+                                    <div className="selectedCategorys">
+                                        {this.state.selectedCategorys.map((item) => (
+                                            <p className="Small-Text-Regular">{item.name}</p>
+                                        ))}
+                                    </div>
+                                    <datalist id="categorys">
+                                        {this.state.categorys.map((item) => (
+                                            <option value={item.name} />
+                                        ))}
+                                    </datalist>
+                                </>
+                            }
+                            <InputText value={name} placeholder="Nome do produto" name="name" onChange={this.onChangeText} type="text"/>
+                            <InputText value={description} placeholder="Descrição" name="description" onChange={this.onChangeText} type="textarea"/>
+                            <InputText value={amount} placeholder="Quantidade em estoque" name="amount" onChange={this.onChangeText} type="text"/>
+                            <InputText value={price} placeholder="Preço" name="price" onChange={this.onChangeText} type="text"/>
                             <button type="submit" className="button buttonPrimary">Salvar</button>
                         </form>
                     </div>

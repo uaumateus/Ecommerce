@@ -97,6 +97,7 @@ class Stock extends Component {
                         onChangeState={this.handleNewProduct}
                         handlerRegister={this.handleNewProduct}
                         notification={this.productAdd}
+                        type="insert"
                     />
                 </div>
                 <div className="content stock">
