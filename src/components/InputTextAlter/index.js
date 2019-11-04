@@ -11,6 +11,10 @@ export default class InputTextAlter extends Component {
         this.setState({alter: !this.state.alter});
     }
 
+    saveAccount = () => {
+        this.props.save();
+    }
+
     render(){
         const { title, value, onChange, name } = this.props;
         let { alter } = this.state;
@@ -21,14 +25,14 @@ export default class InputTextAlter extends Component {
                     {alter ?
                         <input type="text" name={name} className="input Medium-Text-Regular" value={value} onChange={onChange}/>
                     :
-                        <input type="text" className="input Medium-Text-Regular" placeholder={value} disabled />
+                        <input type="text" name={name} value={value} className="input Medium-Text-Regular" disabled />
                     }
 
                     <div className="optionsInput">
                         {alter ?
                         <>
                             <p className="Medium-Text-Regular" onClick={this.handleAlter}>cancelar</p>
-                            <p className="Medium-Text-Regular" onClick={this.handleAlter}>salvar</p>
+                            <p className="Medium-Text-Regular" onClick={this.saveAccount}>salvar</p>
                         </>
                         :
                             <p className="Medium-Text-Regular" onClick={this.handleAlter}>editar</p>

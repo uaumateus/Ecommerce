@@ -99,6 +99,7 @@ class Navbar extends Component{
     }
 
     logout = () => {
+        localStorage.removeItem('@compreaqui-User');
         logout();
         window.location.reload();
     }

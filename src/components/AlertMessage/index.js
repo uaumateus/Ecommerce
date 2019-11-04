@@ -25,6 +25,9 @@ const AlertMessage = ({ message }) => {
             {message == "productAdd" &&
                 <p className="Large-Text-Regular">Produto criado!</p>
             }
+            {message == "passwordAlter" &&
+                <p className="Large-Text-Regular">Senha alterada</p>
+            }
         </div>
     );
 }

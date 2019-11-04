@@ -46,6 +46,11 @@ export default class Login extends Component {
                         login: username, 
                         password: password
                     }).then(r => {  
+                        localStorage.setItem('@compreaqui-User', JSON.stringify({id: r.data.user._id,
+                                                                                email: r.data.user._email,
+                                                                                login: r.data.user._login,
+                                                                                name: r.data.user._name,
+                                                                                adress: r.data.user._adress}));
                         login(r.data.token);
                         window.location.reload();
                     })
@@ -54,6 +59,10 @@ export default class Login extends Component {
                     })   
                 }
                 else{
+                    localStorage.setItem('@compreaqui-User', JSON.stringify({id: resp.data.user._id,
+                                                                            email: resp.data.user._email,
+                                                                            login: resp.data.user._login,
+                                                                            name: resp.data.user._name}));
                     login(resp.data.token);
                     window.location.reload();
                 }
@@ -63,6 +72,11 @@ export default class Login extends Component {
                     login: username, 
                     password: password
                 }).then(resp => {  
+                    localStorage.setItem('@compreaqui-User', JSON.stringify({id: resp.data.user._id,
+                                                                            email: resp.data.user._email,
+                                                                            login: resp.data.user._login,
+                                                                            name: resp.data.user._name,
+                                                                            adress: resp.data.user._adress}));
                     login(resp.data.token);
                     window.location.reload();
                 })
