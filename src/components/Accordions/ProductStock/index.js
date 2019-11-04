@@ -109,7 +109,7 @@ class ProductStock extends Component{
                                 </article>
                                 <article>
                                     <p className="Medium-Text-Regular">Preço:</p>
-                                    <p className="Medium-Text-Bold">{item.price}</p>
+                                    <p className="Medium-Text-Bold">{"R$ " + item.price}</p>
                                 </article>
                             </div>
                         ))}

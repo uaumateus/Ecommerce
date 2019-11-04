@@ -111,6 +111,7 @@ class NewProduct extends Component {
                 data.append('price', price);
                 data.append('file', image);
                 await api.put('/admin/product/'+this.props.product.id, data).then(resp => { 
+                    // window.location.reload();
                     this.closeModal();
                 });
             }else
