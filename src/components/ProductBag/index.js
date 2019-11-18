@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../../services/api';
 import './style.css';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
@@ -11,11 +12,19 @@ class ProductBag extends Component{
     }
 
     state = {
-        valueProduct : 0
+        valueProduct : 0,
+        product: null
     }
 
-    componentDidMount() {
+    componentDidMount = async () => {
         this.setState({valueProduct: this.props.amount});
+        await api.get('/product/'+this.props.id).then(item =>
+        {
+            this.setState({product: item.data});
+            console.log(item.data)
+        }).catch(error => {
+            console.log("Erro ao procurar produto");
+        })
     }
 
     addValueProduct = () => {
@@ -25,7 +34,6 @@ class ProductBag extends Component{
                 productsCookies[i].amount = this.state.valueProduct+1;
         }
         this.setState({valueProduct: this.state.valueProduct+1});
-        // this.props.cookies.set('userBag', productsCookies.splice(i, 1));
         this.props.cookies.set('userBag', productsCookies);
     }
 
@@ -52,29 +60,37 @@ class ProductBag extends Component{
     }
 
     render(){
-        const { product, id, amount } = this.props;
-        const style = { background: `url('${product.image}') no-repeat center center`, 
+        const { product } = this.state;
+        let style, url;
+        if(product){
+            url = 'data:image/jpg;base64,'+product.photo;
+            style = { background: `url(${url}) no-repeat center center`, 
                         backgroundSize: 'cover',
                         height: '90px',
                         width: '70px',
                         borderRadius: '5px'}
+        }
         return(
             <div className="productBag">
-                <div className="containerLeft">
-                    <div className="imgProduct" style={style}></div>
-                    <div>
-                        <p className="Large-Text-Bold titleProduct">{product.title}</p>
-                        <p className="Small-Text-Regular">Em estoque</p>
-                    </div>
-                </div>
-                <div className="containerRight">
-                    <ControllAmount add={this.addValueProduct} remove={this.removeValueProduct} value={this.state.valueProduct}/>
-                    <div className="containerPrice">
-                        <p className="Medium-Text-Regular">Preço:</p>
-                        <p className="Medium-Text-Bold">{"R$ "+product.price+",00"}</p>
-                    </div>
-                    <img src={iconTrash} onClick={this.removeProduct}/>
-                </div>
+                {this.state.product &&
+                    <>
+                        <div className="containerLeft">
+                            <div className="imgProduct" style={style}></div>
+                            <div>
+                                <p className="Large-Text-Bold titleProduct">{product.name}</p>
+                                <p className="Small-Text-Regular">Em estoque</p>
+                            </div>
+                        </div>
+                        <div className="containerRight">
+                            <ControllAmount add={this.addValueProduct} remove={this.removeValueProduct} value={this.state.valueProduct}/>
+                            <div className="containerPrice">
+                                <p className="Medium-Text-Regular">Preço:</p>
+                                <p className="Medium-Text-Bold">{"R$ "+product.price+",00"}</p>
+                            </div>
+                            <img src={iconTrash} onClick={this.removeProduct}/>
+                        </div>
+                    </>
+                }
             </div>
         );
     }
