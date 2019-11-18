@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 import './style.css';
 
 import AlertMessage from '../AlertMessage';
@@ -7,18 +9,41 @@ import Product from '../Modals/Product';
 import iconBag from './assets/bag_icon.svg';
 import iconFavorite from './assets/favorite_icon.svg';
 
-export default class CardProduct extends Component{
-    state = {
-        addBag: false,
-        addFavorite: false,
-        removeBag: false,
-        removeFavorite: false,
-        showProduct: null
-    }
+class CardProduct extends Component{
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    constructor(props){
+        super(props);
+        this.state = {
+            addBag: false,
+            addFavorite: false,
+            removeBag: false,
+            removeFavorite: false,
+            showProduct: null
+        }
+    }    
 
     addBag = () => {
-        this.setState({addBag: true});
-        setTimeout(()=>this.setState({addBag: false}), 3000);
+        const { product, cookies } = this.props;
+        let cookie = cookies.get('userBag');
+        if(cookie === undefined){
+            cookies.set("userBag", [{key: product.id, amount: 1}], '/');
+            this.setState({addBag: true});
+            setTimeout(()=>this.setState({addBag: false}), 3000);
+        }else{
+            let aux = false;
+            for(var item in cookie){
+                if(cookie[item].key === product.id)
+                    aux = true;
+            }
+            if(!aux){
+                cookies.set("userBag", cookie.concat({key: product.id, amount: 1}), '/');
+                this.setState({addBag: true});
+                setTimeout(()=>this.setState({addBag: false}), 3000);
+            }
+        }
     }
 
     addFavorite = () => {
@@ -74,3 +99,5 @@ export default class CardProduct extends Component{
         );
     }
 }
+
+export default withCookies(CardProduct);
