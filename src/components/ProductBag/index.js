@@ -21,7 +21,6 @@ class ProductBag extends Component{
         await api.get('/product/'+this.props.id).then(item =>
         {
             this.setState({product: item.data});
-            console.log(item.data)
         }).catch(error => {
             console.log("Erro ao procurar produto");
         })
@@ -35,6 +34,7 @@ class ProductBag extends Component{
         }
         this.setState({valueProduct: this.state.valueProduct+1});
         this.props.cookies.set('userBag', productsCookies);
+        this.props.updateAmount(productsCookies)
     }
 
     removeValueProduct = () => {
@@ -46,6 +46,7 @@ class ProductBag extends Component{
                     productsCookies[i].amount -= 1;
             }
             this.props.cookies.set('userBag', productsCookies);
+            this.props.updateAmount(productsCookies)
         }
     }
 
