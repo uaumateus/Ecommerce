@@ -29,7 +29,7 @@ class ProductBag extends Component{
     addValueProduct = () => {
         const productsCookies = this.props.cookies.get('userBag');
         for (var i=0; i < productsCookies.length; i++){
-            if (productsCookies[i].key === this.props.id && productsCookies[i].amount === this.state.valueProduct)
+            if (productsCookies[i].id === this.props.id && productsCookies[i].amount === this.state.valueProduct)
                 productsCookies[i].amount = this.state.valueProduct+1;
         }
         this.setState({valueProduct: this.state.valueProduct+1});
@@ -42,7 +42,7 @@ class ProductBag extends Component{
             this.setState({valueProduct: this.state.valueProduct-1});
             const productsCookies = this.props.cookies.get('userBag');
             for (var i=0; i < productsCookies.length; i++){
-                if (productsCookies[i].key === this.props.id && productsCookies[i].amount === this.state.valueProduct)
+                if (productsCookies[i].id === this.props.id && productsCookies[i].amount === this.state.valueProduct)
                     productsCookies[i].amount -= 1;
             }
             this.props.cookies.set('userBag', productsCookies);
@@ -53,7 +53,7 @@ class ProductBag extends Component{
     removeProduct = () => {
         const productsCookies = this.props.cookies.get('userBag');
         for (var i=0; i < productsCookies.length; i++){
-            if (productsCookies[i].key === this.props.id && productsCookies[i].amount === this.state.valueProduct)
+            if (productsCookies[i].id === this.props.id && productsCookies[i].amount === this.state.valueProduct)
                 this.props.cookies.set('userBag', productsCookies.splice(i, 1));
         }
         this.props.cookies.set('userBag', productsCookies);

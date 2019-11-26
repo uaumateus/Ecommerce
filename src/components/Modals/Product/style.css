@@ -56,10 +56,3 @@
     width: 20vw;
     word-wrap: break-word;
 }
-
-.contentModalProduct .infosProduct div{
-    display: grid;
-    grid-template-columns: 85px 1fr;
-    grid-gap: 24px;
-    align-items: center;
-}

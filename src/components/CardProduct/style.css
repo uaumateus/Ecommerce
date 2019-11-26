@@ -37,12 +37,15 @@
 }
 
 .cardProduct .backgroundHover .icons{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
+    display: flex;
+    flex-direction: row;
     position: absolute;
     margin-top: 80px;
     align-items: center;
+}
+
+.cardProduct .backgroundHover .icons img{
+    margin: 0 15px 0 15px;
 }
 
 .cardProduct .backgroundHover img{
@@ -50,5 +53,9 @@
 }
 
 .cardProduct .imgProduct img{
-    width: 100%;
+    width: 120%;
+}
+
+.cardProduct .noStock{
+    color: var(--disable);
 }

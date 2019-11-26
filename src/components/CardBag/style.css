@@ -16,3 +16,9 @@
 .cardBag .containerInfos .Large-Text-Regular{
     margin-right: 10px;
 }
+ 
+.bagModals{
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -52,6 +52,16 @@
     text-align: center;
 }
 
+.contentModalFinishOrder{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.footerModalFinishOrder button{
+    margin: 0 15px 0 15px;
+}
+
 .iconClose{
     width: 16px;
     cursor: pointer;

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 import '../Register/style.css';
 import './style.css';
 
@@ -7,7 +9,11 @@ import close from '../assets/close.svg';
 import ControllAmount from '../../ControllAmount';
 import AlertMessage from '../../AlertMessage';
 
-export default class Product extends Component {
+class Product extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
     state = {
         amountProduct: 1,
         addBag: false
@@ -32,8 +38,24 @@ export default class Product extends Component {
     }
 
     addBag = () => {
-        this.setState({addBag: true});
-        setTimeout(()=>this.setState({addBag: false}), 3000);
+        const { product, cookies } = this.props;
+        let cookie = cookies.get('userBag');
+        if(cookie === undefined){
+            cookies.set("userBag", [{key: product.id, amount: 1}], '/');
+            this.setState({addBag: true});
+            setTimeout(()=>this.setState({addBag: false}), 3000);
+        }else{
+            let aux = false;
+            for(var item in cookie){
+                if(cookie[item].key === product.id)
+                    aux = true;
+            }
+            if(!aux){
+                cookies.set("userBag", cookie.concat({key: product.id, amount: 1}), '/');
+                this.setState({addBag: true});
+                setTimeout(()=>this.setState({addBag: false}), 3000);
+            }
+        }
     }
     
     render(){
@@ -55,18 +77,18 @@ export default class Product extends Component {
                             <img src={`data:image/jpg;base64,${product.photo}`} />
                         </div>
                         <div className="infosProduct">
-                            <p className="Large-Text-Bold titleProduct">{product.name}
-                            </p>
-                            <p className="Large-Text-Light">{"R$ "+product.price}</p>
+                            <p className="Large-Text-Bold titleProduct">{product.name}</p>
+                            {product.amount !== 0 ?
+                                <p className="Large-Text-Light">{"R$ "+product.price}</p>
+                            :
+                                <p className="Large-Text-Light">Fora de estoque</p>
+                            }
                             <p className="Medium-Text-Regular">{product.description}</p>
-                            <div>
-                                <ControllAmount 
-                                    add={this.addAmountProduct}
-                                    remove={this.removeAmountProduct}
-                                    value={this.state.amountProduct}
-                                />
-                                <button className="button buttonPrimary" onClick={this.addBag}>Adicionar à sacola</button>
-                            </div>
+                            {product.amount !== 0 &&
+                                <div>
+                                    <button className="button buttonPrimary" onClick={this.addBag}>Adicionar à sacola</button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -77,3 +99,5 @@ export default class Product extends Component {
         )
     }
 }
+
+export default withCookies(Product);

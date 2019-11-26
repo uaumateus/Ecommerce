@@ -21,18 +21,24 @@ class Bag extends Component{
     }
 
     componentDidMount = () => {
+        this.updateProducts();
+    }
+
+    updateProducts = () => {
         const productsCookies = this.props.cookies.get('userBag');
         if (productsCookies !== undefined){
             this.setState({products: this.props.cookies.get('userBag')});
             let aux = 0;
             for(let i = 0; i < productsCookies.length; i++){
                 aux += productsCookies[i].amount;
-                const getProduct = this.getProduct(productsCookies[i].key);
+                const getProduct = this.getProduct(productsCookies[i].id);
                 getProduct.then(item => {
                     this.setState({total: this.state.total + item * productsCookies[i].amount})
                 })
             }
             this.setState({amountProducts: aux});
+        }else{
+            this.setState({total: 0, amountProducts: 0, products: []})
         }
     }
 
@@ -41,7 +47,7 @@ class Bag extends Component{
         let aux = 0;
         for(let i = 0; i < e.length; i++){
             aux += e[i].amount;
-            const getProduct = this.getProduct(e[i].key);
+            const getProduct = this.getProduct(e[i].id);
             getProduct.then(item => {
 
                 this.setState({total: this.state.total + item * e[i].amount})
@@ -68,10 +74,10 @@ class Bag extends Component{
                 <div className="container">
                     <div>
                         {products.map(item => (
-                            <ProductBag id={item.key} amount={item.amount} updateAmount={this.updateAmount}/>
+                            <ProductBag id={item.id} amount={item.amount} updateAmount={this.updateAmount}/>
                         ))}
                     </div>
-                    <CardBag amount={amountProducts} total={total}/>
+                    <CardBag amount={amountProducts} total={total} updateProducts={this.updateProducts}/>
                 </div>
             </div>
         )

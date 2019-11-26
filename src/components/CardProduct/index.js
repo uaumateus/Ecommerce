@@ -29,17 +29,17 @@ class CardProduct extends Component{
         const { product, cookies } = this.props;
         let cookie = cookies.get('userBag');
         if(cookie === undefined){
-            cookies.set("userBag", [{key: product.id, amount: 1}], '/');
+            cookies.set("userBag", [{id: product.id, amount: 1}], '/');
             this.setState({addBag: true});
             setTimeout(()=>this.setState({addBag: false}), 3000);
         }else{
             let aux = false;
             for(var item in cookie){
-                if(cookie[item].key === product.id)
+                if(cookie[item].id === product.id)
                     aux = true;
             }
             if(!aux){
-                cookies.set("userBag", cookie.concat({key: product.id, amount: 1}), '/');
+                cookies.set("userBag", cookie.concat({id: product.id, amount: 1}), '/');
                 this.setState({addBag: true});
                 setTimeout(()=>this.setState({addBag: false}), 3000);
             }
@@ -73,14 +73,20 @@ class CardProduct extends Component{
                             <button className="button buttonTerceary" onClick={this.handleModalProduct}>Ver Mais</button>
                             <div className="icons">
                                 <img src={iconFavorite} onClick={this.addFavorite}/>
-                                <img src={iconBag} onClick={this.addBag}/>
+                                {product.amount !== 0 &&
+                                    <img src={iconBag} onClick={this.addBag}/>
+                                }
                             </div>
                         </article>
                         <img src={`data:image/jpg;base64,${product.photo}`} />
                     </article>
 
                     <p className="Large-Text-Bold">{product.name}</p>
-                    <p className="Medium-Text-Light">{"R$ " + product.price}</p>
+                    {product.amount !== 0 ?
+                        <p className="Medium-Text-Light">{"R$ " + product.price}</p>
+                    :
+                        <p className="Medium-Text-Light noStock">Fora de estoque</p>
+                    }
 
                     {this.state.addBag &&
                         <AlertMessage message="addBag"/>
