@@ -26,15 +26,17 @@ class ProductBag extends Component{
         })
     }
 
-    addValueProduct = () => {
-        const productsCookies = this.props.cookies.get('userBag');
-        for (var i=0; i < productsCookies.length; i++){
-            if (productsCookies[i].id === this.props.id && productsCookies[i].amount === this.state.valueProduct)
-                productsCookies[i].amount = this.state.valueProduct+1;
+    addValueProduct = (max) => {
+        if((this.state.valueProduct+1) <= max){
+            const productsCookies = this.props.cookies.get('userBag');
+            for (var i=0; i < productsCookies.length; i++){
+                if (productsCookies[i].id === this.props.id && productsCookies[i].amount === this.state.valueProduct)
+                    productsCookies[i].amount = this.state.valueProduct+1;
+            }
+            this.setState({valueProduct: this.state.valueProduct+1});
+            this.props.cookies.set('userBag', productsCookies);
+            this.props.updateAmount(productsCookies)
         }
-        this.setState({valueProduct: this.state.valueProduct+1});
-        this.props.cookies.set('userBag', productsCookies);
-        this.props.updateAmount(productsCookies)
     }
 
     removeValueProduct = () => {
@@ -83,7 +85,7 @@ class ProductBag extends Component{
                             </div>
                         </div>
                         <div className="containerRight">
-                            <ControllAmount add={this.addValueProduct} remove={this.removeValueProduct} value={this.state.valueProduct}/>
+                            <ControllAmount add={this.addValueProduct} remove={this.removeValueProduct} value={this.state.valueProduct} max={this.state.product.amount}/>
                             <div className="containerPrice">
                                 <p className="Medium-Text-Regular">Preço:</p>
                                 <p className="Medium-Text-Bold">{"R$ "+product.price+",00"}</p>

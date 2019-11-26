@@ -84,11 +84,13 @@ class Product extends Component {
                                 <p className="Large-Text-Light">Fora de estoque</p>
                             }
                             <p className="Medium-Text-Regular">{product.description}</p>
-                            {product.amount !== 0 &&
-                                <div>
+                            <div>
+                                {product.amount !== 0 ?
                                     <button className="button buttonPrimary" onClick={this.addBag}>Adicionar à sacola</button>
-                                </div>
-                            }
+                                :
+                                    <button className="button buttonPrimary">Avise-me quando chegar</button>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
