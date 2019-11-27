@@ -8,29 +8,36 @@ import TableThreeColumns from '../../../../components/Tables/ThreeColumns';
 class PurchasesPerCustomer extends Component {
 
     state = {
-        clients: [
-            {tab1: "005", tab2: "John Doe da Silva", tab3: "13"},
-            {tab1: "006", tab2: "Mateus Pereira dos Santos", tab3: "3"},
-            {tab1: "007", tab2: "Andrew Noronha", tab3: "10"},
-            {tab1: "005", tab2: "John Doe da Silva", tab3: "54"},
-            {tab1: "005", tab2: "John Doe da Silva", tab3: "2"}
-        ],
-        loading: false
+        clients: [],
+        // loading: false
     }
 
     componentDidMount = async () => {
-        await api.get('/admin/auth').then(resp => {
-            if(!resp.data.result){
-                this.props.history.push('/');
+        // await api.get('/admin/auth').then(resp => {
+        //     if(!resp.data.result){
+        //         this.props.history.push('/');
+        //     }
+        //     else this.setState({loading: true});
+        // }).catch(error => {
+        //     this.props.history.push('/');
+        // })
+        await api.post('/admin/clients-purchase-date', {minDate: "20-11-2019, 00:00:00 PM", maxDate: "28-11-2019, 00:00:00 PM"}).then(resp => {
+            let array = [];
+            for(var i = 0; i < resp.data.length; i++){
+                if(resp.data[i].purchases !== undefined)
+                    array.push({tab1: resp.data[i].id, tab2: resp.data[i].name, tab3: resp.data[i].purchases.length});
+                else    
+                array.push({tab1: resp.data[i].id, tab2: resp.data[i].name, tab3: "0"});
             }
-            else this.setState({loading: true});
-        }).catch(error => {
-            this.props.history.push('/');
+            this.setState({clients: array});
+            console.log(resp)
+        }).catch(err => {
+            console.log(err)
         })
     }
 
     render(){
-        if (!this.state.loading) return null;
+        if (this.state.clients === []) return null;
         return(
             <div className="content">
                 <BreadCrumb previousPage="Relatórios" actualPage="Compras por Cliente"/>
