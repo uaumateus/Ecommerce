@@ -72,12 +72,27 @@
 }
 
 .accordionHistoric .container, .accordionStock .container{
-    grid-template-columns: 1fr 1fr 1fr 50px;
+    grid-template-columns: 100px 1fr 1fr 50px;
+}
+
+.accordionHistoric .containerHistoric{
+    grid-template-columns: 100px 1fr 1fr 1fr;
 }
 
 .accordionCostumers .container{
-    grid-template-columns: 1fr 350px;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 15%;
+}
+
+.accordionCostumers .containerProduct{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.accordionCostumers .containerProduct img{
+    width: 70px;
+    margin-right: 16px;
 }
 
 .accordionHistoric .containerProduct, .accordionStock .containerProduct{
@@ -138,4 +153,24 @@
 .accordionStock .container{
     display: grid;
     grid-template-columns: auto 1fr 1fr;
+}
+
+.accordionCostumers .titlePurchase{
+    height: max-content;
+    border-top: 1px solid var(--disable);
+    padding: 10px 24px;
+    display: grid;
+    align-items: center;
+    background-color: #e9ebee;
+    grid-template-columns: 1fr auto;
+    grid-gap: 15%;
+}
+
+.accordionCostumers .titlePurchase p{
+    color: black;
+}
+
+.accordionCostumers .titlePurchase img{
+    width: 18px;
+    cursor: pointer;
 }

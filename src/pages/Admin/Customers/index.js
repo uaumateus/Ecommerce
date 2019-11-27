@@ -8,32 +8,27 @@ import AccordionCostumers from '../../../components/Accordions/Costumers';
 class Customers extends Component {
 
     state = {
-        clients: [
-            {username: "johndoe123", name:"John Doe da Silva"}
-        ],
-        loading: false
+        clients: []
     }
 
     componentDidMount = async () => {
-        await api.get('/admin/auth').then(resp => {
-            if(!resp.data.result){
-                this.props.history.push('/');
-            }
-            else this.setState({loading: true});
+        await api.get('/admin/clients-purchase').then(resp => {
+            this.setState({clients: resp.data})
+            console.log(resp.data)
         }).catch(error => {
-            this.props.history.push('/');
+            console.log("Erro ao procurar clientes")
         })
     }
 
     render(){
-        if (!this.state.loading) return null;
+        const { clients } = this.state;
+        if(clients === []){ return null }
         return(
             <div className="content">
                 <BreadCrumb actualPage="Clientes"/>
-                <AccordionCostumers />
-                <AccordionCostumers />
-                <AccordionCostumers />
-                <AccordionCostumers />
+                {clients.map(item => (
+                    <AccordionCostumers user={item}/>
+                ))}
             </div>
         )
     }
